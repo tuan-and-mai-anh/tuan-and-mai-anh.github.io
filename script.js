@@ -509,7 +509,7 @@ galleryToggle?.addEventListener("click", () => {
   });
 
   galleryToggle.setAttribute("aria-expanded", String(willExpand));
-  galleryToggle.textContent = willExpand ? "Collapse gallery" : "View all 50";
+  galleryToggle.textContent = willExpand ? "Collapse gallery" : "View all";
   if (galleryStatus) {
     galleryStatus.textContent = willExpand
       ? "All 50 gallery photos are now visible."
