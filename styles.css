@@ -1080,6 +1080,12 @@ footer a {
 }
 
 @media (max-width: 520px) {
+  .gallery-item,
+  .gallery-item.landscape {
+    grid-column: auto;
+    aspect-ratio: 3 / 4;
+  }
+
   .hero-details {
     display: grid;
     gap: 0.6rem;
