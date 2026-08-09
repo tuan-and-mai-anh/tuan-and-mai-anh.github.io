@@ -662,6 +662,10 @@ a {
   background: #d9cec1;
 }
 
+.gallery-item[hidden] {
+  display: none;
+}
+
 .gallery-item.landscape {
   grid-column: span 2;
   aspect-ratio: 3 / 2;
@@ -696,6 +700,12 @@ a {
 .gallery-item:focus-visible::after {
   opacity: 1;
   transform: scale(0.96);
+}
+
+.gallery-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(2rem, 4vw, 3rem);
 }
 
 .lightbox {
@@ -733,6 +743,7 @@ a {
   min-height: 0;
   object-fit: contain;
   object-position: center;
+  touch-action: pan-y;
 }
 
 .lightbox figcaption {
