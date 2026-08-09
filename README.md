@@ -28,8 +28,8 @@ The project has no build step and can be hosted directly with GitHub Pages, Netl
 
 ## Video
 
-- The hero uses an eight-second excerpt from `teaser.MA_AT.h26510bit.mov` (approximately 00:51.5–00:59.5), selected for its cohesive sequence of the couple walking together by the Seine.
-- Web outputs are 1280×720, silent, 25 fps: H.264 MP4 (~1.3 MB) and VP9 WebM (~1.0 MB), with a 1600×900 JPEG poster.
+- The hero uses a boundary-aligned 14.56-second excerpt from `teaser.MA_AT.h26510bit.mov` (00:05.08–00:19.64). Frame inspection selected the first stable image after the blur at 00:05 and the nearest clean cut before 00:20.
+- Web outputs are 1280×720, silent, 25 fps: H.264 MP4 (~2.37 MB) and VP9 WebM (~1.72 MB), with a 1600×900 JPEG poster from 00:12.36 (~0.08 MB).
 - The background loop is muted, inline, and paused when the page is hidden. Visitors who prefer reduced motion see the poster instead.
 - The full film is embedded lazily from YouTube using the privacy-enhanced `youtube-nocookie.com` domain: `https://www.youtube.com/watch?v=zc-idmSZ0Js`.
 
