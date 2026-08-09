@@ -20,6 +20,12 @@ The project has no build step and can be hosted directly with GitHub Pages, Netl
 - The calendar download stores the 2:30 PM Hanoi welcome time in UTC for broad calendar compatibility.
 - No analytics, third-party form embeds, or tracking scripts are included.
 
+## Music
+
+- “Our song” uses the official YouTube IFrame API and privacy-enhanced `youtube-nocookie.com` player for video `hiI_f9hsC7I`; no audio is downloaded or hosted here.
+- The first genuine click or tap attempts playback, while a persistent Play/Pause control and status message remain available when browser autoplay policies block it.
+- Starting the song pauses the pre-wedding film, and starting the film pauses the song so their audio does not compete.
+
 ## Video
 
 - The hero uses an eight-second excerpt from `teaser.MA_AT.h26510bit.mov` (approximately 00:51.5–00:59.5), selected for its cohesive sequence of the couple walking together by the Seine.
@@ -29,7 +35,7 @@ The project has no build step and can be hosted directly with GitHub Pages, Netl
 
 ## Curated photo selection
 
-The “years, coast to coast” story visual uses `PreWeddingA&T-71.jpg`.
+The “four years, coast to coast” story visual uses `PreWeddingA&T-71.jpg`.
 
 The gallery uses the following 20 different images from the couple's authorized pre-wedding list. The set balances Louvre, café, street, Seine, Eiffel Tower, and formal architectural settings; portrait and landscape compositions; white, red/black, and wedding outfits; and candid, playful, editorial, and intimate moments. Bride-only portraits are positions 9 (`PreWeddingA&T-89.jpg`) and 18 (`PreWeddingA&T-152.jpg`); groom-only portraits are positions 2 (`PreWeddingA&T-10.jpg`) and 12 (`PreWeddingA&T-109.jpg`). The remaining 16 images show the couple. The final desktop row combines a portrait, a landscape, and a portrait so it fills the four-column grid without a singleton.
 

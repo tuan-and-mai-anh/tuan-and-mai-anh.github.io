@@ -543,6 +543,12 @@ a {
   transform: translateY(-2px);
 }
 
+.button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+  transform: none;
+}
+
 .button-light {
   color: var(--wine-dark);
   background: #fff;
@@ -776,6 +782,64 @@ a {
 
 .lightbox-next {
   right: 1rem;
+}
+
+.song {
+  background: #fffaf4;
+}
+
+.song-layout {
+  width: min(100%, 48rem);
+  margin: 0 auto;
+}
+
+.song-frame {
+  min-height: 202px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  aspect-ratio: 16 / 9;
+  background: #1b1413;
+  box-shadow: 0 1.5rem 4rem rgba(52, 43, 40, 0.16);
+}
+
+.song-frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.song-controls {
+  display: flex;
+  min-height: 3rem;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.song-toggle {
+  flex-shrink: 0;
+  gap: 0.65rem;
+}
+
+.song-toggle-icon {
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+.song-status {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.song-link {
+  margin-left: auto;
+  color: var(--wine);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-underline-offset: 0.25rem;
 }
 
 .film {
@@ -1028,6 +1092,20 @@ footer a {
 
   .schedule-actions {
     flex-direction: column;
+  }
+
+  .song-controls {
+    align-items: stretch;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .song-toggle {
+    width: 100%;
+  }
+
+  .song-link {
+    margin-left: 0;
   }
 
   .lightbox {

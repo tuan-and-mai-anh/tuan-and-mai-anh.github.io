@@ -87,6 +87,175 @@ reducedMotion.addEventListener?.("change", updateHeroPlayback);
 document.addEventListener("visibilitychange", updateHeroPlayback);
 updateHeroPlayback();
 
+const songToggle = document.querySelector("#song-toggle");
+const songToggleIcon = songToggle?.querySelector(".song-toggle-icon");
+const songToggleLabel = songToggle?.querySelector("[data-song-label]");
+const songStatus = document.querySelector("#song-status");
+const filmIframe = document.querySelector("#film-player");
+let songPlayer;
+let filmPlayer;
+let songPlayerReady = false;
+let filmPlayerReady = false;
+let firstClickRequestedPlayback = false;
+let playbackStatusTimer;
+
+function setSongStatus(message) {
+  if (songStatus) songStatus.textContent = message;
+}
+
+function setSongControlPlaying(isPlaying) {
+  songToggle?.setAttribute("aria-pressed", String(isPlaying));
+  songToggle?.setAttribute("aria-label", isPlaying ? "Pause Our song" : "Play Our song");
+  if (songToggleIcon) songToggleIcon.textContent = isPlaying ? "Ⅱ" : "▶";
+  if (songToggleLabel) songToggleLabel.textContent = isPlaying ? "Pause music" : "Play music";
+}
+
+function clearPlaybackStatusTimer() {
+  if (playbackStatusTimer) window.clearTimeout(playbackStatusTimer);
+  playbackStatusTimer = undefined;
+}
+
+function pauseFilmIfPlaying() {
+  if (!filmPlayerReady || !window.YT) return;
+  const state = filmPlayer.getPlayerState();
+  if (state === YT.PlayerState.PLAYING || state === YT.PlayerState.BUFFERING) {
+    filmPlayer.pauseVideo();
+  }
+}
+
+function attemptSongPlayback() {
+  if (!songPlayerReady) {
+    setSongStatus("Music will start when the player is ready. The Play button will remain available.");
+    return;
+  }
+
+  try {
+    pauseFilmIfPlaying();
+    songPlayer.unMute();
+    songPlayer.setVolume(70);
+    songPlayer.playVideo();
+    setSongStatus("Starting Our song…");
+    clearPlaybackStatusTimer();
+    playbackStatusTimer = window.setTimeout(() => {
+      if (songPlayer.getPlayerState() !== YT.PlayerState.PLAYING) {
+        setSongControlPlaying(false);
+        setSongStatus("Playback was blocked. Select Play music to try again.");
+      }
+    }, 2500);
+  } catch {
+    setSongControlPlaying(false);
+    setSongStatus("Playback could not start. Select Play music to try again.");
+  }
+}
+
+function handleFirstGuestClick(event) {
+  if (!event.isTrusted || event.detail === 0 || (typeof event.button === "number" && event.button !== 0)) return;
+  document.removeEventListener("click", handleFirstGuestClick, true);
+  firstClickRequestedPlayback = true;
+  attemptSongPlayback();
+}
+
+document.addEventListener("click", handleFirstGuestClick, true);
+
+songToggle?.addEventListener("click", () => {
+  if (!songPlayerReady) {
+    setSongStatus("The music player is still loading. Please try again in a moment.");
+    return;
+  }
+
+  if (songPlayer.getPlayerState() === YT.PlayerState.PLAYING) {
+    songPlayer.pauseVideo();
+  } else {
+    attemptSongPlayback();
+  }
+});
+
+function handleSongStateChange(event) {
+  if (event.data === YT.PlayerState.PLAYING) {
+    clearPlaybackStatusTimer();
+    setSongControlPlaying(true);
+    setSongStatus("Our song is playing.");
+    pauseFilmIfPlaying();
+  } else if (event.data === YT.PlayerState.PAUSED) {
+    clearPlaybackStatusTimer();
+    setSongControlPlaying(false);
+    setSongStatus("Music paused.");
+  } else if (event.data === YT.PlayerState.ENDED) {
+    clearPlaybackStatusTimer();
+    setSongControlPlaying(false);
+    setSongStatus("Our song has ended. Select Play music to hear it again.");
+  } else if (event.data === YT.PlayerState.BUFFERING) {
+    setSongStatus("Starting Our song…");
+  }
+}
+
+function initializeYouTubePlayers() {
+  songPlayer = new YT.Player("song-player", {
+    width: 640,
+    height: 360,
+    videoId: "hiI_f9hsC7I",
+    host: "https://www.youtube-nocookie.com",
+    playerVars: {
+      autoplay: 0,
+      controls: 1,
+      playsinline: 1,
+      rel: 0,
+      origin: window.location.origin,
+    },
+    events: {
+      onReady: (event) => {
+        songPlayerReady = true;
+        songToggle.disabled = false;
+        event.target.getIframe().title = "Our song — YouTube player";
+        setSongStatus("Ready to play Our song.");
+        if (firstClickRequestedPlayback) attemptSongPlayback();
+      },
+      onStateChange: handleSongStateChange,
+      onError: () => {
+        clearPlaybackStatusTimer();
+        songToggle.disabled = true;
+        setSongControlPlaying(false);
+        setSongStatus("The music player is unavailable. Use the YouTube link to listen.");
+      },
+    },
+  });
+
+  if (filmIframe) {
+    filmPlayer = new YT.Player(filmIframe, {
+      events: {
+        onReady: (event) => {
+          filmPlayerReady = true;
+          event.target.getIframe().title = "Mai Anh and Anh Tuan's pre-wedding film";
+        },
+        onStateChange: (event) => {
+          if (event.data === YT.PlayerState.PLAYING && songPlayerReady) {
+            const songState = songPlayer.getPlayerState();
+            if (songState === YT.PlayerState.PLAYING || songState === YT.PlayerState.BUFFERING) {
+              songPlayer.pauseVideo();
+            }
+          }
+        },
+      },
+    });
+  }
+}
+
+window.onYouTubeIframeAPIReady = initializeYouTubePlayers;
+const youtubeApiScript = document.createElement("script");
+youtubeApiScript.src = "https://www.youtube.com/iframe_api";
+youtubeApiScript.async = true;
+youtubeApiScript.addEventListener("error", () => {
+  songToggle.disabled = true;
+  setSongStatus("The music player could not load. Use the YouTube link to listen.");
+});
+document.head.appendChild(youtubeApiScript);
+
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden || !window.YT) return;
+  if (songPlayerReady && songPlayer.getPlayerState() === YT.PlayerState.PLAYING) songPlayer.pauseVideo();
+  if (filmPlayerReady && filmPlayer.getPlayerState() === YT.PlayerState.PLAYING) filmPlayer.pauseVideo();
+});
+
 const weddingTime = new Date("2026-12-24T15:00:00+07:00").getTime();
 const countdownFields = {
   days: document.querySelector('[data-count="days"]'),
