@@ -98,6 +98,12 @@ let songPlayerReady = false;
 let filmPlayerReady = false;
 let firstClickRequestedPlayback = false;
 let playbackStatusTimer;
+let scrollPlaybackAttempted = false;
+let scrollPointerStart;
+let scrollTouchStart;
+
+const passiveCaptureOptions = { capture: true, passive: true };
+const passiveOptions = { passive: true };
 
 function setSongStatus(message) {
   if (songStatus) songStatus.textContent = message;
@@ -157,6 +163,81 @@ function handleFirstGuestClick(event) {
 
 document.addEventListener("click", handleFirstGuestClick, true);
 
+function removeScrollPlaybackListeners() {
+  document.removeEventListener("wheel", handleScrollPlaybackGesture, passiveCaptureOptions);
+  document.removeEventListener("pointerdown", handleScrollPointerStart, passiveCaptureOptions);
+  document.removeEventListener("pointermove", handleScrollPointerMove, passiveCaptureOptions);
+  document.removeEventListener("pointercancel", clearScrollPointer, passiveCaptureOptions);
+  document.removeEventListener("pointerup", clearScrollPointer, passiveCaptureOptions);
+  document.removeEventListener("touchstart", handleScrollTouchStart, passiveCaptureOptions);
+  document.removeEventListener("touchmove", handleScrollTouchMove, passiveCaptureOptions);
+  document.removeEventListener("touchcancel", clearScrollTouch, passiveCaptureOptions);
+  document.removeEventListener("touchend", clearScrollTouch, passiveCaptureOptions);
+  window.removeEventListener("scroll", handleScrollFallback, passiveOptions);
+}
+
+function requestSongFromScroll(event) {
+  if (scrollPlaybackAttempted || !event.isTrusted) return;
+  scrollPlaybackAttempted = true;
+  removeScrollPlaybackListeners();
+  firstClickRequestedPlayback = true;
+  attemptSongPlayback();
+}
+
+function handleScrollPlaybackGesture(event) {
+  requestSongFromScroll(event);
+}
+
+function handleScrollPointerStart(event) {
+  if (!event.isTrusted || event.isPrimary === false) return;
+  if (event.pointerType === "mouse" && event.button !== 0) return;
+  scrollPointerStart = { id: event.pointerId, x: event.clientX, y: event.clientY };
+}
+
+function handleScrollPointerMove(event) {
+  if (!event.isTrusted || !scrollPointerStart || event.pointerId !== scrollPointerStart.id) return;
+  const horizontalDistance = Math.abs(event.clientX - scrollPointerStart.x);
+  const verticalDistance = Math.abs(event.clientY - scrollPointerStart.y);
+  if (verticalDistance >= 8 && verticalDistance > horizontalDistance) requestSongFromScroll(event);
+}
+
+function clearScrollPointer(event) {
+  if (!scrollPointerStart || event.pointerId === scrollPointerStart.id) scrollPointerStart = undefined;
+}
+
+function handleScrollTouchStart(event) {
+  if (!event.isTrusted || event.touches.length !== 1) return;
+  const touch = event.touches[0];
+  scrollTouchStart = { x: touch.clientX, y: touch.clientY };
+}
+
+function handleScrollTouchMove(event) {
+  if (!event.isTrusted || !scrollTouchStart || event.touches.length !== 1) return;
+  const touch = event.touches[0];
+  const horizontalDistance = Math.abs(touch.clientX - scrollTouchStart.x);
+  const verticalDistance = Math.abs(touch.clientY - scrollTouchStart.y);
+  if (verticalDistance >= 8 && verticalDistance > horizontalDistance) requestSongFromScroll(event);
+}
+
+function clearScrollTouch() {
+  scrollTouchStart = undefined;
+}
+
+function handleScrollFallback(event) {
+  requestSongFromScroll(event);
+}
+
+document.addEventListener("wheel", handleScrollPlaybackGesture, passiveCaptureOptions);
+document.addEventListener("pointerdown", handleScrollPointerStart, passiveCaptureOptions);
+document.addEventListener("pointermove", handleScrollPointerMove, passiveCaptureOptions);
+document.addEventListener("pointercancel", clearScrollPointer, passiveCaptureOptions);
+document.addEventListener("pointerup", clearScrollPointer, passiveCaptureOptions);
+document.addEventListener("touchstart", handleScrollTouchStart, passiveCaptureOptions);
+document.addEventListener("touchmove", handleScrollTouchMove, passiveCaptureOptions);
+document.addEventListener("touchcancel", clearScrollTouch, passiveCaptureOptions);
+document.addEventListener("touchend", clearScrollTouch, passiveCaptureOptions);
+window.addEventListener("scroll", handleScrollFallback, passiveOptions);
+
 songToggle?.addEventListener("click", () => {
   if (!songPlayerReady) {
     setSongStatus("The music player is still loading. Please try again in a moment.");
@@ -173,6 +254,8 @@ songToggle?.addEventListener("click", () => {
 function handleSongStateChange(event) {
   if (event.data === YT.PlayerState.PLAYING) {
     clearPlaybackStatusTimer();
+    document.removeEventListener("click", handleFirstGuestClick, true);
+    removeScrollPlaybackListeners();
     setSongControlPlaying(true);
     setSongStatus("Our song is playing.");
     pauseFilmIfPlaying();

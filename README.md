@@ -23,7 +23,7 @@ The project has no build step and can be hosted directly with GitHub Pages, Netl
 ## Music
 
 - “Our song” uses the official YouTube IFrame API and privacy-enhanced `youtube-nocookie.com` player for video `hiI_f9hsC7I`; no audio is downloaded or hosted here.
-- The first genuine click or tap attempts playback, while a persistent Play/Pause control and status message remain available when browser autoplay policies block it.
+- The first genuine click/tap or trusted scroll gesture attempts playback once. Passive wheel, pointer/touch movement, and scroll-fallback listeners remove themselves after the attempt, while a persistent Play/Pause control and status message remain available when browser autoplay policies block it.
 - Starting the song pauses the pre-wedding film, and starting the film pauses the song so their audio does not compete.
 
 ## Video
