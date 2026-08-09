@@ -101,6 +101,7 @@ let playbackStatusTimer;
 let scrollPlaybackAttempted = false;
 let scrollPointerStart;
 let scrollTouchStart;
+let trustedScrollGesturePending = false;
 
 const passiveCaptureOptions = { capture: true, passive: true };
 const passiveOptions = { passive: true };
@@ -191,6 +192,7 @@ function handleScrollPlaybackGesture(event) {
 function handleScrollPointerStart(event) {
   if (!event.isTrusted || event.isPrimary === false) return;
   if (event.pointerType === "mouse" && event.button !== 0) return;
+  trustedScrollGesturePending = true;
   scrollPointerStart = { id: event.pointerId, x: event.clientX, y: event.clientY };
 }
 
@@ -203,11 +205,13 @@ function handleScrollPointerMove(event) {
 
 function clearScrollPointer(event) {
   if (!scrollPointerStart || event.pointerId === scrollPointerStart.id) scrollPointerStart = undefined;
+  trustedScrollGesturePending = false;
 }
 
 function handleScrollTouchStart(event) {
   if (!event.isTrusted || event.touches.length !== 1) return;
   const touch = event.touches[0];
+  trustedScrollGesturePending = true;
   scrollTouchStart = { x: touch.clientX, y: touch.clientY };
 }
 
@@ -221,10 +225,11 @@ function handleScrollTouchMove(event) {
 
 function clearScrollTouch() {
   scrollTouchStart = undefined;
+  trustedScrollGesturePending = false;
 }
 
 function handleScrollFallback(event) {
-  requestSongFromScroll(event);
+  if (trustedScrollGesturePending) requestSongFromScroll(event);
 }
 
 document.addEventListener("wheel", handleScrollPlaybackGesture, passiveCaptureOptions);
