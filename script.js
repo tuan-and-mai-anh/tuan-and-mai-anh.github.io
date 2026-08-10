@@ -294,7 +294,7 @@ function initializeYouTubePlayers() {
       onReady: (event) => {
         songPlayerReady = true;
         songToggle.disabled = false;
-        event.target.getIframe().title = "Our song — YouTube player";
+        event.target.getIframe().title = "Our song - YouTube player";
         setSongStatus("Ready to play Our song.");
         if (firstClickRequestedPlayback) attemptSongPlayback();
       },
