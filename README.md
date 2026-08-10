@@ -30,6 +30,7 @@ The project has no build step and can be hosted directly with GitHub Pages, Netl
 
 - The hero uses a boundary-aligned 14.56-second excerpt from `teaser.MA_AT.h26510bit.mov` (00:05.08–00:19.64). Frame inspection selected the first stable image after the blur at 00:05 and the nearest clean cut before 00:20.
 - Web outputs are 1280×720, silent, 25 fps: H.264 MP4 (~2.37 MB) and VP9 WebM (~1.72 MB), with a 1600×900 JPEG poster from 00:12.36 (~0.08 MB).
+- Phone-width outputs use the same frames in a 720×1280 composition: the complete source frame is centered over a blurred, desaturated fill tinted with the site's `#3f2928` wine-dark tone. The H.264 MP4 is ~1.22 MB, VP9 WebM is ~0.72 MB, and the matching poster is ~0.03 MB.
 - The background loop is muted, inline, and paused when the page is hidden. Visitors who prefer reduced motion see the poster instead.
 - The full film is embedded lazily from YouTube using the privacy-enhanced `youtube-nocookie.com` domain: `https://www.youtube.com/watch?v=zc-idmSZ0Js`.
 
