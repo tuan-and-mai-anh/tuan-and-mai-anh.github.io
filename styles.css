@@ -356,21 +356,12 @@ a {
 }
 
 .story-art {
-  position: relative;
   display: block;
   min-height: 31rem;
   margin: 0;
   overflow: hidden;
   border-radius: 50% 50% 1rem 1rem;
-  color: #fff;
   box-shadow: 1.5rem 1.5rem 0 var(--paper-deep);
-}
-
-.story-art::after {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(0deg, rgba(46, 29, 27, 0.7), transparent 52%);
-  content: "";
 }
 
 .story-art img {
@@ -378,32 +369,6 @@ a {
   height: 34rem;
   object-fit: cover;
   object-position: center 42%;
-}
-
-.story-art figcaption {
-  position: absolute;
-  right: 2rem;
-  bottom: 2rem;
-  left: 2rem;
-  z-index: 1;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.32);
-}
-
-.story-art figcaption strong {
-  font-family: var(--serif);
-  font-size: clamp(5rem, 10vw, 8rem);
-  font-weight: 400;
-  line-height: 0.65;
-}
-
-.story-art figcaption span {
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
 }
 
 .story-copy {
