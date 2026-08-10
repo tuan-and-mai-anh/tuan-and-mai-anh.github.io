@@ -1045,11 +1045,6 @@ footer a {
 }
 
 @media (max-width: 520px) {
-  .hero-photo img,
-  .hero-video {
-    object-position: center;
-  }
-
   .gallery-item,
   .gallery-item.landscape {
     grid-column: auto;
@@ -1122,12 +1117,6 @@ footer a {
 
   .timeline-item h3 {
     font-size: 1.6rem;
-  }
-}
-
-@media (max-width: 379px) {
-  .song-frame {
-    aspect-ratio: auto;
   }
 }
 

@@ -38,12 +38,9 @@
   <main id="main-content">
     <section class="hero" aria-labelledby="hero-title">
       <picture class="hero-photo" aria-hidden="true">
-        <source media="(max-width: 520px)" srcset="assets/video/hero-poster-mobile.jpg">
         <img src="assets/video/hero-poster.jpg" alt="" fetchpriority="high">
       </picture>
-      <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-        <source media="(max-width: 520px)" src="assets/video/hero-loop-mobile.webm" type="video/webm">
-        <source media="(max-width: 520px)" src="assets/video/hero-loop-mobile.mp4" type="video/mp4">
+      <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/video/hero-poster.jpg" aria-hidden="true">
         <source src="assets/video/hero-loop.webm" type="video/webm">
         <source src="assets/video/hero-loop.mp4" type="video/mp4">
       </video>
