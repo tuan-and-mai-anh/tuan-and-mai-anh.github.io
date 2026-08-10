@@ -35,7 +35,7 @@ The project has no build step and can be hosted directly with GitHub Pages, Netl
 
 ## Curated photo selection
 
-The “four years, coast to coast” story visual uses `PreWeddingA&T-71.jpg`.
+The “three years, coast to coast” story visual uses `PreWeddingA&T-71.jpg`.
 
 The gallery uses the following 50 unique images from the couple's authorized pre-wedding list, in this exact order. The first 20 are visible initially; the remaining 30 are revealed with the “View all” control. The selection balances Louvre, café, flower-shop, street, Seine, Eiffel Tower, garden, and formal architectural settings; portrait and landscape compositions; white, red/black, and wedding outfits; and candid, playful, editorial, detail, and intimate moments. Ten wide layout features keep every desktop and mobile grid row balanced, while the lightbox always displays the complete uncropped image.
 
