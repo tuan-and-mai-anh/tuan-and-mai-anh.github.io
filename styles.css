@@ -92,17 +92,6 @@ body {
   text-align: center;
 }
 
-.language-landing-mark {
-  margin: 0 0 0.45rem;
-  color: var(--ink);
-  font-family: var(--serif);
-  font-size: 1.35rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  line-height: 1.25;
-}
-
-.language-landing-mark i,
 .language-landing-panel h1 i {
   color: var(--rose);
   font-weight: 400;
@@ -909,8 +898,19 @@ a {
   font-feature-settings: "lnum" 1, "onum" 0;
   font-weight: 500;
   font-variant-numeric: lining-nums;
+  line-height: 1.2;
   letter-spacing: 0.035em;
   text-align: center;
+  text-wrap: nowrap;
+  text-transform: none;
+  white-space: nowrap;
+}
+
+.schedule-rsvp-vi .rsvp-message-vi {
+  font-size: clamp(1.075rem, 2.5vw, 2rem);
+  line-height: 1.15;
+  text-wrap: nowrap;
+  white-space: nowrap;
 }
 
 .schedule-rsvp-vi p:not(.eyebrow) {
@@ -1347,10 +1347,6 @@ footer a {
       max(1.25rem, env(safe-area-inset-left));
   }
 
-  .language-landing-mark {
-    margin-bottom: 0.4rem;
-  }
-
   .language-landing-panel h1 {
     font-size: clamp(1.9rem, 8.5vw, 3.25rem);
   }
@@ -1581,6 +1577,10 @@ footer a {
   .timeline-time,
   .schedule-rsvp-vi .rsvp-deadline-vi {
     font-size: 1.2rem;
+  }
+
+  .schedule-rsvp-vi .rsvp-deadline-vi {
+    font-size: 1.19375rem;
   }
 
   .timeline-item h3 {
