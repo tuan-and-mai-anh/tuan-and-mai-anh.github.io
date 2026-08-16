@@ -876,6 +876,12 @@ a {
   background: var(--paper-deep);
 }
 
+.gallery-heading-single h2.vi-display-heading {
+  font-size: clamp(1.2rem, 5vw, 3rem);
+  letter-spacing: -0.045em;
+  white-space: nowrap;
+}
+
 .gallery-grid {
   display: grid;
   width: min(100%, 84rem);
