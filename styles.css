@@ -31,7 +31,10 @@ body {
 
 .language-landing {
   min-height: 100svh;
-  background: var(--wine-dark);
+  padding: clamp(1.25rem, 5vw, 4.5rem) 1rem;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(146, 88, 76, 0.38), transparent 34rem),
+    var(--wine-dark);
 }
 
 .language-landing::before {
@@ -39,38 +42,33 @@ body {
 }
 
 .language-landing-main {
-  display: grid;
-  min-height: 100svh;
-  grid-template-columns: minmax(20rem, 0.84fr) minmax(30rem, 1.16fr);
+  width: min(100%, 42.5rem);
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.45rem;
   background: var(--paper);
+  box-shadow: 0 2rem 6rem rgba(24, 12, 12, 0.34);
 }
 
 .language-landing-visual {
   position: relative;
-  min-height: 100svh;
+  width: 100%;
   overflow: hidden;
+  aspect-ratio: 2 / 3;
   background: #251817;
 }
 
 .language-landing-visual picture,
-.language-landing-visual img,
-.language-landing-shade {
-  position: absolute;
-  inset: 0;
+.language-landing-visual img {
+  display: block;
   width: 100%;
-  height: 100%;
 }
 
 .language-landing-visual img {
-  object-fit: cover;
-  object-position: center 12%;
-}
-
-.language-landing-shade {
-  background:
-    linear-gradient(90deg, transparent 58%, rgba(37, 24, 23, 0.22)),
-    linear-gradient(0deg, rgba(37, 24, 23, 0.34), transparent 42%);
-  pointer-events: none;
+  height: auto;
+  aspect-ratio: 2 / 3;
+  object-fit: contain;
 }
 
 .language-landing-panel {
@@ -78,13 +76,13 @@ body {
   min-width: 0;
   align-items: center;
   flex-direction: column;
-  justify-content: center;
-  padding: clamp(3rem, 7vw, 7rem);
+  padding: clamp(3rem, 8vw, 5rem) clamp(1.25rem, 8vw, 5rem);
+  border-top: 1px solid var(--line);
   text-align: center;
 }
 
 .language-landing-mark {
-  margin: 0 0 clamp(2.5rem, 7vh, 5rem);
+  margin: 0 0 2rem;
   color: var(--ink);
   font-family: var(--serif);
   font-size: 1.7rem;
@@ -101,7 +99,7 @@ body {
 .language-landing-panel h1 {
   margin: 0;
   font-family: var(--serif);
-  font-size: clamp(3.5rem, 6.5vw, 6.5rem);
+  font-size: clamp(3.75rem, 9vw, 5.5rem);
   font-weight: 400;
   letter-spacing: -0.045em;
   line-height: 0.88;
@@ -174,7 +172,7 @@ body {
 }
 
 .language-landing-location {
-  margin: clamp(2.5rem, 7vh, 5rem) 0 0;
+  margin: 3rem 0 0;
   color: var(--muted);
   font-size: 0.62rem;
   letter-spacing: 0.15em;
@@ -1081,37 +1079,32 @@ footer a {
 }
 
 @media (max-width: 700px) {
+  .language-landing {
+    padding: 0;
+    background: var(--paper);
+  }
+
   .language-landing-main {
-    display: block;
+    width: 100%;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
   }
 
   .language-landing-visual {
-    width: 100%;
-    min-height: 22rem;
-    height: 58svh;
-  }
-
-  .language-landing-visual img {
-    object-position: center 8%;
-  }
-
-  .language-landing-shade {
-    background:
-      linear-gradient(0deg, rgba(37, 24, 23, 0.46), transparent 48%),
-      linear-gradient(90deg, rgba(37, 24, 23, 0.12), transparent 30%, rgba(37, 24, 23, 0.12));
+    aspect-ratio: 2 / 3;
   }
 
   .language-landing-panel {
-    min-height: 42svh;
-    padding: 2.5rem 1.25rem 3rem;
+    padding: 3rem 1.25rem 3.5rem;
   }
 
   .language-landing-mark {
-    display: none;
+    margin-bottom: 1.75rem;
   }
 
   .language-landing-panel h1 {
-    font-size: clamp(3.35rem, 17vw, 5rem);
+    font-size: clamp(3.35rem, 16vw, 4.75rem);
   }
 
   .language-prompt {
