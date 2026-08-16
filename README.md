@@ -45,9 +45,9 @@ The project has no build step and can be hosted directly with GitHub Pages, Netl
 
 The “Our love story” visual uses `PreWeddingA&T-71.jpg`.
 
-The gallery uses the following 50 unique images from the couple's authorized pre-wedding list, in this exact order. The first 20 are visible initially; the remaining 30 are revealed with the “View all” control. The selection balances Louvre, café, flower-shop, street, Seine, Eiffel Tower, garden, and formal architectural settings; portrait and landscape compositions; white, red/black, and wedding outfits; and candid, playful, editorial, detail, and intimate moments. Ten wide layout features keep every desktop and mobile grid row balanced, while the lightbox always displays the complete uncropped image.
+The gallery uses the following 60 unique images from the couple's authorized pre-wedding list, in this exact order. The first 20 are visible initially; the remaining 40 are revealed with the “View all” control. The selection balances Louvre, café, flower-shop, street, Seine, Eiffel Tower, garden, and formal architectural settings; portrait and landscape compositions; white, red/black, and wedding outfits; and candid, playful, editorial, detail, and intimate moments. Twelve wide layout features keep every desktop and mobile grid row balanced, while the lightbox always displays the complete uncropped image.
 
-Subject counts: 42 couple photos, 4 bride-only portraits (positions 12, 18, 38, and 40: `PreWeddingA&T-89.jpg`, `PreWeddingA&T-152.jpg`, `PreWeddingA&T-104.jpg`, and `PreWeddingA&T-124.jpg`), and 4 groom-only portraits (positions 2, 14, 24, and 35: `PreWeddingA&T-10.jpg`, `PreWeddingA&T-109.jpg`, `PreWeddingA&T-44.jpg`, and `PreWeddingA&T-82.jpg`). `PreWeddingA&T-71.jpg` is deliberately excluded because it is the story visual; `PreWeddingA&T-139.jpg`, which is used as the page's social-sharing image, is also excluded from the gallery.
+Subject counts: 52 couple photos, 4 bride-only portraits (positions 11, 17, 37, and 39: `PreWeddingA&T-89.jpg`, `PreWeddingA&T-152.jpg`, `PreWeddingA&T-104.jpg`, and `PreWeddingA&T-124.jpg`), and 4 groom-only portraits (positions 2, 13, 23, and 34: `PreWeddingA&T-10.jpg`, `PreWeddingA&T-109.jpg`, `PreWeddingA&T-44.jpg`, and `PreWeddingA&T-82.jpg`). `PreWeddingA&T-71.jpg` is deliberately excluded because it is the story visual; `PreWeddingA&T-139.jpg`, which is used as the page's social-sharing image, is also excluded from the gallery.
 
 - `PreWeddingA&T-5.jpg`
 - `PreWeddingA&T-10.jpg`
@@ -59,7 +59,6 @@ Subject counts: 42 couple photos, 4 bride-only portraits (positions 12, 18, 38, 
 - `PreWeddingA&T-40.jpg`
 - `PreWeddingA&T-192.jpg`
 - `PreWeddingA&T-54.jpg`
-- `PreWeddingA&T-63.jpg`
 - `PreWeddingA&T-89.jpg`
 - `PreWeddingA&T-100.jpg`
 - `PreWeddingA&T-109.jpg`
@@ -99,5 +98,16 @@ Subject counts: 42 couple photos, 4 bride-only portraits (positions 12, 18, 38, 
 - `PreWeddingA&T-175.jpg`
 - `PreWeddingA&T-196.jpg`
 - `PreWeddingA&T-193.jpg`
+- `PreWeddingA&T-13.jpg`
+- `PreWeddingA&T-16.jpg`
+- `PreWeddingA&T-19.jpg`
+- `PreWeddingA&T-47.jpg`
+- `PreWeddingA&T-55.jpg`
+- `PreWeddingA&T-56.jpg`
+- `PreWeddingA&T-88.jpg`
+- `PreWeddingA&T-92.jpg`
+- `PreWeddingA&T-99.jpg`
+- `PreWeddingA&T-195.jpg`
+- `PreWeddingA&T-194.jpg`
 
-Each gallery image has a web-optimized full version (maximum 2,200 pixels, progressive JPEG) and a lazy-loaded thumbnail (maximum 720 pixels). The story image keeps only its full-size asset. Metadata is stripped during conversion.
+Each gallery image has a web-optimized full version (maximum 2,200 pixels) and a lazy-loaded thumbnail (maximum 720 pixels), using progressive JPEG or WebP assets with metadata stripped during conversion. The story image keeps only its full-size asset.

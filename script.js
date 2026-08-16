@@ -22,7 +22,7 @@ const ui = {
     photoCounter: (position, total) => `Photo ${position} / ${total}`,
     collapseGallery: "Collapse gallery",
     viewAll: "View all",
-    allPhotosVisible: "All 50 gallery photos are now visible.",
+    allPhotosVisible: (total) => `All ${total} gallery photos are now visible.`,
     galleryCollapsed: "Gallery collapsed to the first 20 photos.",
     calendarSummary: "Mai Anh & Anh Tuan's Wedding",
     calendarDescription: "Welcome at 2:30 PM, ceremony at 3:00 PM, reception at 5:30 PM, and after party at 8:30 PM.",
@@ -51,7 +51,7 @@ const ui = {
     photoCounter: (position, total) => `Ảnh ${position} / ${total}`,
     collapseGallery: "Thu gọn thư viện ảnh",
     viewAll: "Xem tất cả",
-    allPhotosVisible: "Cả 50 ảnh trong thư viện đang được hiển thị.",
+    allPhotosVisible: (total) => `Cả ${total} ảnh trong thư viện đang được hiển thị.`,
     galleryCollapsed: "Thư viện đã thu gọn còn 20 ảnh đầu tiên.",
     calendarSummary: "Lễ cưới của Mai Anh & Anh Tuan",
     calendarDescription: "Đón khách lúc 14:30, làm lễ lúc 15:00, tiệc cưới lúc 17:30 và tiệc sau lễ lúc 20:30.",
@@ -454,7 +454,6 @@ const galleryPhotos = [
   { number: 40, alt: "Mai Anh and Anh Tuan in white outfits and sunglasses" },
   { number: 192, alt: "Mai Anh and Anh Tuan overlooking the Seine and Eiffel Tower at sunset", wide: true },
   { number: 54, alt: "Mai Anh and Anh Tuan strolling near the Eiffel Tower" },
-  { number: 63, alt: "Mai Anh and Anh Tuan outside a Parisian cafe" },
   { number: 89, alt: "Mai Anh posing alone in a red dress outside Au Bon Accueil" },
   { number: 100, alt: "Mai Anh and Anh Tuan posing playfully in red and black" },
   { number: 109, alt: "Anh Tuan in a black tuxedo with the Eiffel Tower behind him" },
@@ -464,7 +463,7 @@ const galleryPhotos = [
   { number: 152, alt: "Mai Anh in a classic bridal portrait beneath her veil" },
   { number: 197, alt: "Mai Anh and Anh Tuan together at sunset with the Eiffel Tower" },
   { number: 14, alt: "Mai Anh and Anh Tuan striding together on the Louvre steps" },
-  { number: 1, alt: "Mai Anh and Anh Tuan walking toward the Louvre pyramid", wide: true },
+  { number: 1, alt: "Mai Anh and Anh Tuan walking toward the Louvre pyramid" },
   { number: 22, alt: "Mai Anh and Anh Tuan framed by sunlit Louvre columns" },
   { number: 36, alt: "Mai Anh and Anh Tuan walking through the Palais Royal courtyard" },
   { number: 44, alt: "Anh Tuan posing in sunglasses beside the Palais Royal columns" },
@@ -494,6 +493,17 @@ const galleryPhotos = [
   { number: 175, alt: "Mai Anh and Anh Tuan posing in sunglasses at sunset" },
   { number: 196, alt: "Mai Anh and Anh Tuan touching hands above the Seine at sunset" },
   { number: 193, alt: "Mai Anh and Anh Tuan sharing a soft-focus sunset moment", wide: true },
+  { number: 13, alt: "Mai Anh and Anh Tuan walking together beneath the Louvre pyramid", wide: true },
+  { number: 16, alt: "Mai Anh and Anh Tuan posing together at the Louvre" },
+  { number: 19, alt: "Mai Anh and Anh Tuan looking at each other beside the Louvre pyramid" },
+  { number: 47, alt: "Mai Anh and Anh Tuan walking together in white outfits and sunglasses", wide: true },
+  { number: 55, alt: "Mai Anh and Anh Tuan kissing beneath Paris street signs", wide: true },
+  { number: 56, alt: "Mai Anh and Anh Tuan standing together on a sunny Paris street" },
+  { number: 88, alt: "Mai Anh and Anh Tuan walking hand in hand toward the Eiffel Tower" },
+  { number: 92, alt: "Mai Anh and Anh Tuan holding hands beneath the Eiffel Tower" },
+  { number: 99, alt: "Mai Anh and Anh Tuan kissing near the Eiffel Tower at sunset" },
+  { number: 195, alt: "Mai Anh and Anh Tuan embracing beside the Seine" },
+  { number: 194, alt: "Mai Anh and Anh Tuan framed in soft focus with the Eiffel Tower" },
 ];
 
 const galleryAltVi = {
@@ -512,7 +522,6 @@ const galleryAltVi = {
   54: "Mai Anh và Anh Tuan dạo bước gần tháp Eiffel",
   58: "Mai Anh và Anh Tuan vui đùa bên một quầy báo ở Paris",
   61: "Mai Anh vẫy tay khi cùng Anh Tuan dạo bước giữa Paris",
-  63: "Mai Anh và Anh Tuan bên ngoài một quán cà phê Paris",
   65: "Mai Anh và Anh Tuan hôn nhau trước một cửa hàng hoa ở Paris",
   66: "Mai Anh và Anh Tuan đi trên con phố rợp bóng cây ở Paris",
   68: "Mai Anh và Anh Tuan đi ngang một cửa hàng hoa Paris",
@@ -547,6 +556,17 @@ const galleryAltVi = {
   193: "Mai Anh và Anh Tuan trong khoảnh khắc hoàng hôn mờ dịu",
   196: "Mai Anh và Anh Tuan chạm tay nhau trên sông Seine lúc hoàng hôn",
   197: "Mai Anh và Anh Tuan bên nhau lúc hoàng hôn với tháp Eiffel",
+  13: "Mai Anh và Anh Tuan bước bên nhau dưới kim tự tháp Louvre",
+  16: "Mai Anh và Anh Tuan tạo dáng bên nhau tại Louvre",
+  19: "Mai Anh và Anh Tuan nhìn nhau bên kim tự tháp Louvre",
+  47: "Mai Anh và Anh Tuan sánh bước trong trang phục trắng và kính râm",
+  55: "Mai Anh và Anh Tuan hôn nhau dưới những biển tên đường Paris",
+  56: "Mai Anh và Anh Tuan đứng bên nhau trên con phố Paris ngập nắng",
+  88: "Mai Anh và Anh Tuan nắm tay bước về phía tháp Eiffel",
+  92: "Mai Anh và Anh Tuan nắm tay dưới tháp Eiffel",
+  99: "Mai Anh và Anh Tuan hôn nhau gần tháp Eiffel lúc hoàng hôn",
+  194: "Mai Anh và Anh Tuan trong khung hình mờ dịu cùng tháp Eiffel",
+  195: "Mai Anh và Anh Tuan ôm nhau bên sông Seine",
 };
 
 if (locale === "vi") {
@@ -563,13 +583,15 @@ const lightboxImage = lightbox?.querySelector("img");
 const lightboxCaption = lightbox?.querySelector("figcaption");
 const initiallyVisiblePhotos = 20;
 const landscapePhotoNumbers = new Set([80, 180, 181]);
-const twoByThreePhotoNumbers = new Set([5, 22, 53, 82, 91, 144]);
+const twoByThreePhotoNumbers = new Set([5, 22, 53, 82, 91, 92, 144]);
+const webpPhotoNumbers = new Set([13, 16, 19, 47, 55, 56, 88, 92, 99, 194, 195]);
 let activePhotoIndex = 0;
 let touchStartX = 0;
 let touchStartY = 0;
 
 function photoUrl(size, number) {
-  return `/assets/photos/prewedding/${size}/PreWeddingA%26T-${number}.jpg`;
+  const extension = webpPhotoNumbers.has(number) ? "webp" : "jpg";
+  return `/assets/photos/prewedding/${size}/PreWeddingA%26T-${number}.${extension}`;
 }
 
 function photoDimensions(size, number) {
@@ -639,7 +661,7 @@ galleryToggle?.addEventListener("click", () => {
   galleryToggle.textContent = willExpand ? ui.collapseGallery : ui.viewAll;
   if (galleryStatus) {
     galleryStatus.textContent = willExpand
-      ? ui.allPhotosVisible
+      ? ui.allPhotosVisible(galleryPhotos.length)
       : ui.galleryCollapsed;
   }
 });
