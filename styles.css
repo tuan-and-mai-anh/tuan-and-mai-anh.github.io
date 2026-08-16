@@ -29,6 +29,158 @@ body {
   line-height: 1.7;
 }
 
+.language-landing {
+  min-height: 100svh;
+  background: var(--wine-dark);
+}
+
+.language-landing::before {
+  display: none;
+}
+
+.language-landing-main {
+  display: grid;
+  min-height: 100svh;
+  grid-template-columns: minmax(20rem, 0.84fr) minmax(30rem, 1.16fr);
+  background: var(--paper);
+}
+
+.language-landing-visual {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  background: #251817;
+}
+
+.language-landing-visual picture,
+.language-landing-visual img,
+.language-landing-shade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.language-landing-visual img {
+  object-fit: cover;
+  object-position: center 12%;
+}
+
+.language-landing-shade {
+  background:
+    linear-gradient(90deg, transparent 58%, rgba(37, 24, 23, 0.22)),
+    linear-gradient(0deg, rgba(37, 24, 23, 0.34), transparent 42%);
+  pointer-events: none;
+}
+
+.language-landing-panel {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(3rem, 7vw, 7rem);
+  text-align: center;
+}
+
+.language-landing-mark {
+  margin: 0 0 clamp(2.5rem, 7vh, 5rem);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.language-landing-mark i,
+.language-landing-panel h1 i {
+  color: var(--rose);
+  font-weight: 400;
+}
+
+.language-landing-panel h1 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(3.5rem, 6.5vw, 6.5rem);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 0.88;
+}
+
+.language-prompt {
+  display: grid;
+  margin: 2.25rem 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  gap: 0.15rem;
+}
+
+.language-options {
+  display: grid;
+  width: min(100%, 26rem);
+  gap: 0.85rem;
+}
+
+.language-option {
+  display: grid;
+  min-height: 4.75rem;
+  align-content: center;
+  padding: 0.9rem 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: 0.4rem;
+  color: var(--ink);
+  gap: 0.05rem;
+  text-decoration: none;
+  transition: border-color 180ms ease, color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.language-option strong {
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  font-weight: 500;
+}
+
+.language-option span {
+  color: var(--muted);
+  font-size: 0.64rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.language-option-primary {
+  border-color: var(--wine);
+  color: #fff;
+  background: var(--wine);
+}
+
+.language-option-primary span {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.language-option:hover,
+.language-option:focus-visible {
+  border-color: var(--wine);
+  color: #fff;
+  outline: 3px solid rgba(146, 88, 76, 0.28);
+  outline-offset: 3px;
+  background: var(--wine);
+  transform: translateY(-2px);
+}
+
+.language-option:hover span,
+.language-option:focus-visible span {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.language-landing-location {
+  margin: clamp(2.5rem, 7vh, 5rem) 0 0;
+  color: var(--muted);
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
 body::before {
   position: fixed;
   inset: 0;
@@ -132,6 +284,11 @@ a {
   letter-spacing: 0.13em;
   text-decoration: none;
   text-transform: uppercase;
+}
+
+.site-nav .language-switch {
+  color: #f0c9ba;
+  white-space: nowrap;
 }
 
 .site-nav a:not(.nav-rsvp)::after {
@@ -923,6 +1080,49 @@ footer a {
   text-underline-offset: 0.35rem;
 }
 
+@media (max-width: 700px) {
+  .language-landing-main {
+    display: block;
+  }
+
+  .language-landing-visual {
+    width: 100%;
+    min-height: 22rem;
+    height: 58svh;
+  }
+
+  .language-landing-visual img {
+    object-position: center 8%;
+  }
+
+  .language-landing-shade {
+    background:
+      linear-gradient(0deg, rgba(37, 24, 23, 0.46), transparent 48%),
+      linear-gradient(90deg, rgba(37, 24, 23, 0.12), transparent 30%, rgba(37, 24, 23, 0.12));
+  }
+
+  .language-landing-panel {
+    min-height: 42svh;
+    padding: 2.5rem 1.25rem 3rem;
+  }
+
+  .language-landing-mark {
+    display: none;
+  }
+
+  .language-landing-panel h1 {
+    font-size: clamp(3.35rem, 17vw, 5rem);
+  }
+
+  .language-prompt {
+    margin: 1.5rem 0;
+  }
+
+  .language-landing-location {
+    margin-top: 2rem;
+  }
+}
+
 @media (max-width: 800px) {
   .site-header {
     padding: 1rem 1.25rem;
@@ -1117,6 +1317,12 @@ footer a {
 
   .timeline-item h3 {
     font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 379px) {
+  .song-frame {
+    aspect-ratio: auto;
   }
 }
 

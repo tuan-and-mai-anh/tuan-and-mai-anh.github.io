@@ -8,7 +8,15 @@ A responsive, static wedding website for December 24, 2026 in Hanoi, Vietnam.
 python3 -m http.server 8000
 ```
 
-Then open `http://localhost:8000`.
+Then open `http://localhost:8000`. The root path is always the language selector; the complete sites are available at `/en/` and `/vn/`.
+
+## Language routes
+
+- `/` is a lightweight English/Tiếng Việt selector with no JavaScript, video, gallery, or music initialization.
+- `/en/` contains the complete English site.
+- `/vn/` contains the complete Vietnamese site.
+- Both full sites share `/styles.css`, `/script.js`, and the single asset library under `/assets/`.
+- The selector uses the couple's supplied Eiffel Tower portrait in responsive 480 px and 680 px WebP files, with JPEG fallbacks. Its bilingual-neutral alt text identifies the couple, Paris, and the Eiffel Tower.
 
 ## Publishing
 

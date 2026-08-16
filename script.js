@@ -1,3 +1,65 @@
+const locale = document.documentElement.lang.startsWith("vi") ? "vi" : "en";
+const ui = {
+  en: {
+    pauseSongAria: "Pause Our song",
+    playSongAria: "Play Our song",
+    pauseMusic: "Pause music",
+    playMusic: "Play music",
+    waitingForPlayer: "Music will start when the player is ready. The Play button will remain available.",
+    startingSong: "Starting Our song…",
+    playbackBlocked: "Playback was blocked. Select Play music to try again.",
+    playbackFailed: "Playback could not start. Select Play music to try again.",
+    playerLoading: "The music player is still loading. Please try again in a moment.",
+    songPlaying: "Our song is playing.",
+    musicPaused: "Music paused.",
+    songEnded: "Our song has ended. Select Play music to hear it again.",
+    songPlayerTitle: "Our song - YouTube player",
+    songReady: "Ready to play Our song.",
+    songUnavailable: "The music player is unavailable. Use the YouTube link to listen.",
+    songLoadFailed: "The music player could not load. Use the YouTube link to listen.",
+    filmTitle: "Mai Anh and Anh Tuan's pre-wedding film",
+    openPhoto: (position, total) => `Open photo ${position} of ${total}`,
+    photoCounter: (position, total) => `Photo ${position} / ${total}`,
+    collapseGallery: "Collapse gallery",
+    viewAll: "View all",
+    allPhotosVisible: "All 50 gallery photos are now visible.",
+    galleryCollapsed: "Gallery collapsed to the first 20 photos.",
+    calendarSummary: "Mai Anh & Anh Tuan's Wedding",
+    calendarDescription: "Welcome at 2:30 PM, ceremony at 3:00 PM, reception at 5:30 PM, and after party at 8:30 PM.",
+    calendarLocation: "Sheraton Hanoi Hotel\\, Hanoi\\, Vietnam",
+    calendarFilename: "mai-anh-and-anh-tuan-wedding.ics",
+  },
+  vi: {
+    pauseSongAria: "Tạm dừng bài hát của chúng mình",
+    playSongAria: "Phát bài hát của chúng mình",
+    pauseMusic: "Tạm dừng nhạc",
+    playMusic: "Phát nhạc",
+    waitingForPlayer: "Nhạc sẽ bắt đầu khi trình phát sẵn sàng. Nút Phát nhạc vẫn luôn khả dụng.",
+    startingSong: "Đang phát bài hát của chúng mình…",
+    playbackBlocked: "Trình duyệt đã chặn phát nhạc. Hãy chọn Phát nhạc để thử lại.",
+    playbackFailed: "Không thể bắt đầu phát nhạc. Hãy chọn Phát nhạc để thử lại.",
+    playerLoading: "Trình phát nhạc vẫn đang tải. Vui lòng thử lại sau giây lát.",
+    songPlaying: "Bài hát của chúng mình đang được phát.",
+    musicPaused: "Đã tạm dừng nhạc.",
+    songEnded: "Bài hát đã kết thúc. Hãy chọn Phát nhạc để nghe lại.",
+    songPlayerTitle: "Bài hát của chúng mình - trình phát YouTube",
+    songReady: "Sẵn sàng phát bài hát của chúng mình.",
+    songUnavailable: "Trình phát nhạc hiện không khả dụng. Hãy dùng liên kết YouTube để nghe.",
+    songLoadFailed: "Không thể tải trình phát nhạc. Hãy dùng liên kết YouTube để nghe.",
+    filmTitle: "Phim trước ngày cưới của Mai Anh và Anh Tuan",
+    openPhoto: (position, total) => `Mở ảnh ${position} trên ${total}`,
+    photoCounter: (position, total) => `Ảnh ${position} / ${total}`,
+    collapseGallery: "Thu gọn thư viện ảnh",
+    viewAll: "Xem tất cả",
+    allPhotosVisible: "Cả 50 ảnh trong thư viện đang được hiển thị.",
+    galleryCollapsed: "Thư viện đã thu gọn còn 20 ảnh đầu tiên.",
+    calendarSummary: "Lễ cưới của Mai Anh & Anh Tuan",
+    calendarDescription: "Đón khách lúc 14:30, làm lễ lúc 15:00, tiệc cưới lúc 17:30 và tiệc sau lễ lúc 20:30.",
+    calendarLocation: "Khách sạn Sheraton Hanoi\\, Hà Nội\\, Việt Nam",
+    calendarFilename: "dam-cuoi-mai-anh-anh-tuan.ics",
+  },
+}[locale];
+
 const header = document.querySelector(".site-header");
 const menuButton = document.querySelector(".menu-toggle");
 const navigation = document.querySelector(".site-nav");
@@ -112,9 +174,9 @@ function setSongStatus(message) {
 
 function setSongControlPlaying(isPlaying) {
   songToggle?.setAttribute("aria-pressed", String(isPlaying));
-  songToggle?.setAttribute("aria-label", isPlaying ? "Pause Our song" : "Play Our song");
+  songToggle?.setAttribute("aria-label", isPlaying ? ui.pauseSongAria : ui.playSongAria);
   if (songToggleIcon) songToggleIcon.textContent = isPlaying ? "Ⅱ" : "▶";
-  if (songToggleLabel) songToggleLabel.textContent = isPlaying ? "Pause music" : "Play music";
+  if (songToggleLabel) songToggleLabel.textContent = isPlaying ? ui.pauseMusic : ui.playMusic;
 }
 
 function clearPlaybackStatusTimer() {
@@ -132,7 +194,7 @@ function pauseFilmIfPlaying() {
 
 function attemptSongPlayback() {
   if (!songPlayerReady) {
-    setSongStatus("Music will start when the player is ready. The Play button will remain available.");
+    setSongStatus(ui.waitingForPlayer);
     return;
   }
 
@@ -141,17 +203,17 @@ function attemptSongPlayback() {
     songPlayer.unMute();
     songPlayer.setVolume(70);
     songPlayer.playVideo();
-    setSongStatus("Starting Our song…");
+    setSongStatus(ui.startingSong);
     clearPlaybackStatusTimer();
     playbackStatusTimer = window.setTimeout(() => {
       if (songPlayer.getPlayerState() !== YT.PlayerState.PLAYING) {
         setSongControlPlaying(false);
-        setSongStatus("Playback was blocked. Select Play music to try again.");
+        setSongStatus(ui.playbackBlocked);
       }
     }, 2500);
   } catch {
     setSongControlPlaying(false);
-    setSongStatus("Playback could not start. Select Play music to try again.");
+    setSongStatus(ui.playbackFailed);
   }
 }
 
@@ -245,7 +307,7 @@ window.addEventListener("scroll", handleScrollFallback, passiveOptions);
 
 songToggle?.addEventListener("click", () => {
   if (!songPlayerReady) {
-    setSongStatus("The music player is still loading. Please try again in a moment.");
+    setSongStatus(ui.playerLoading);
     return;
   }
 
@@ -262,18 +324,18 @@ function handleSongStateChange(event) {
     document.removeEventListener("click", handleFirstGuestClick, true);
     removeScrollPlaybackListeners();
     setSongControlPlaying(true);
-    setSongStatus("Our song is playing.");
+    setSongStatus(ui.songPlaying);
     pauseFilmIfPlaying();
   } else if (event.data === YT.PlayerState.PAUSED) {
     clearPlaybackStatusTimer();
     setSongControlPlaying(false);
-    setSongStatus("Music paused.");
+    setSongStatus(ui.musicPaused);
   } else if (event.data === YT.PlayerState.ENDED) {
     clearPlaybackStatusTimer();
     setSongControlPlaying(false);
-    setSongStatus("Our song has ended. Select Play music to hear it again.");
+    setSongStatus(ui.songEnded);
   } else if (event.data === YT.PlayerState.BUFFERING) {
-    setSongStatus("Starting Our song…");
+    setSongStatus(ui.startingSong);
   }
 }
 
@@ -294,8 +356,8 @@ function initializeYouTubePlayers() {
       onReady: (event) => {
         songPlayerReady = true;
         songToggle.disabled = false;
-        event.target.getIframe().title = "Our song - YouTube player";
-        setSongStatus("Ready to play Our song.");
+        event.target.getIframe().title = ui.songPlayerTitle;
+        setSongStatus(ui.songReady);
         if (firstClickRequestedPlayback) attemptSongPlayback();
       },
       onStateChange: handleSongStateChange,
@@ -303,7 +365,7 @@ function initializeYouTubePlayers() {
         clearPlaybackStatusTimer();
         songToggle.disabled = true;
         setSongControlPlaying(false);
-        setSongStatus("The music player is unavailable. Use the YouTube link to listen.");
+        setSongStatus(ui.songUnavailable);
       },
     },
   });
@@ -313,7 +375,7 @@ function initializeYouTubePlayers() {
       events: {
         onReady: (event) => {
           filmPlayerReady = true;
-          event.target.getIframe().title = "Mai Anh and Anh Tuan's pre-wedding film";
+          event.target.getIframe().title = ui.filmTitle;
         },
         onStateChange: (event) => {
           if (event.data === YT.PlayerState.PLAYING && songPlayerReady) {
@@ -334,7 +396,7 @@ youtubeApiScript.src = "https://www.youtube.com/iframe_api";
 youtubeApiScript.async = true;
 youtubeApiScript.addEventListener("error", () => {
   songToggle.disabled = true;
-  setSongStatus("The music player could not load. Use the YouTube link to listen.");
+  setSongStatus(ui.songLoadFailed);
 });
 document.head.appendChild(youtubeApiScript);
 
@@ -428,6 +490,65 @@ const galleryPhotos = [
   { number: 193, alt: "Mai Anh and Anh Tuan sharing a soft-focus sunset moment", wide: true },
 ];
 
+const galleryAltVi = {
+  1: "Mai Anh và Anh Tuan bước về phía kim tự tháp Louvre",
+  5: "Mai Anh và Anh Tuan nắm tay bước đi trước kim tự tháp Louvre",
+  10: "Anh Tuan mặc vest trắng trên bậc thềm Louvre",
+  14: "Mai Anh và Anh Tuan sải bước bên nhau trên bậc thềm Louvre",
+  18: "Mai Anh và Anh Tuan bên nhau trong khoảnh khắc dịu dàng dưới tấm voan",
+  22: "Mai Anh và Anh Tuan giữa những hàng cột Louvre ngập nắng",
+  26: "Mai Anh và Anh Tuan nắm tay dưới hàng cột Louvre",
+  34: "Mai Anh và Anh Tuan nắm tay dạo bước giữa Paris",
+  36: "Mai Anh và Anh Tuan đi qua sân Palais Royal",
+  40: "Mai Anh và Anh Tuan trong trang phục trắng và kính râm",
+  44: "Anh Tuan đeo kính râm bên những hàng cột Palais Royal",
+  53: "Mai Anh và Anh Tuan dưới một biển tên đường ở Paris",
+  54: "Mai Anh và Anh Tuan dạo bước gần tháp Eiffel",
+  58: "Mai Anh và Anh Tuan vui đùa bên một quầy báo ở Paris",
+  61: "Mai Anh vẫy tay khi cùng Anh Tuan dạo bước giữa Paris",
+  63: "Mai Anh và Anh Tuan bên ngoài một quán cà phê Paris",
+  65: "Mai Anh và Anh Tuan hôn nhau trước một cửa hàng hoa ở Paris",
+  66: "Mai Anh và Anh Tuan đi trên con phố rợp bóng cây ở Paris",
+  68: "Mai Anh và Anh Tuan đi ngang một cửa hàng hoa Paris",
+  72: "Mai Anh và Anh Tuan nhìn nhau trên một con phố Paris",
+  75: "Mai Anh và Anh Tuan đứng bên nhau trên đại lộ Paris",
+  77: "Mai Anh và Anh Tuan nắm tay băng qua đường phố Paris",
+  80: "Mai Anh và Anh Tuan ngồi bên nhau với tháp Eiffel phía sau",
+  82: "Anh Tuan mặc vest tối màu với tháp Eiffel phía sau",
+  89: "Mai Anh tạo dáng một mình trong váy đỏ bên ngoài Au Bon Accueil",
+  91: "Mai Anh và Anh Tuan cười bên nhau gần tháp Eiffel",
+  95: "Mai Anh và Anh Tuan nắm tay dưới tháp Eiffel",
+  100: "Mai Anh và Anh Tuan tinh nghịch bên nhau trong trang phục đỏ và đen",
+  104: "Mai Anh tạo dáng một mình trong váy cưới trên sân thượng nhìn ra tháp Eiffel",
+  109: "Anh Tuan mặc tuxedo đen với tháp Eiffel phía sau",
+  114: "Chân dung đen trắng của Mai Anh và Anh Tuan trên sân thượng",
+  116: "Mai Anh và Anh Tuan mỉm cười bên nhau trong trang phục cưới",
+  124: "Mai Anh tạo dáng một mình cùng bó hoa trên sân thượng Paris",
+  127: "Mai Anh cầm bó hoa, bên cạnh là Anh Tuan",
+  136: "Mai Anh và Anh Tuan hôn nhau trên sân thượng nhìn ra tháp Eiffel",
+  144: "Mai Anh và Anh Tuan ngồi bên nhau với tháp Eiffel phía sau",
+  151: "Mai Anh và Anh Tuan bên nhau tại một lối vào cổ kính ở Paris",
+  152: "Chân dung cô dâu Mai Anh dưới tấm voan",
+  158: "Mai Anh và Anh Tuan dưới một mái vòm đá cổ kính",
+  160: "Mai Anh và Anh Tuan trên bậc thềm trước cánh cổng mạ vàng",
+  162: "Mai Anh và Anh Tuan đứng bên nhau trên bãi cỏ rợp bóng cây",
+  166: "Mai Anh và Anh Tuan dạo bước trong khu vườn qua khung hình đen trắng",
+  174: "Mai Anh và Anh Tuan nắm tay bên chiếc váy cưới đính lông vũ",
+  175: "Mai Anh và Anh Tuan đeo kính râm trong ánh hoàng hôn",
+  180: "Mai Anh và Anh Tuan bên nhau lúc hoàng hôn trên sông Seine",
+  181: "Mai Anh và Anh Tuan nhìn ra sông Seine trong khung hình đen trắng",
+  192: "Mai Anh và Anh Tuan ngắm sông Seine và tháp Eiffel lúc hoàng hôn",
+  193: "Mai Anh và Anh Tuan trong khoảnh khắc hoàng hôn mờ dịu",
+  196: "Mai Anh và Anh Tuan chạm tay nhau trên sông Seine lúc hoàng hôn",
+  197: "Mai Anh và Anh Tuan bên nhau lúc hoàng hôn với tháp Eiffel",
+};
+
+if (locale === "vi") {
+  galleryPhotos.forEach((photo) => {
+    photo.alt = galleryAltVi[photo.number];
+  });
+}
+
 const galleryGrid = document.querySelector("#gallery-grid");
 const galleryToggle = document.querySelector("#gallery-toggle");
 const galleryStatus = document.querySelector("#gallery-status");
@@ -442,7 +563,7 @@ let touchStartX = 0;
 let touchStartY = 0;
 
 function photoUrl(size, number) {
-  return `assets/photos/prewedding/${size}/PreWeddingA%26T-${number}.jpg`;
+  return `/assets/photos/prewedding/${size}/PreWeddingA%26T-${number}.jpg`;
 }
 
 function photoDimensions(size, number) {
@@ -461,7 +582,7 @@ function showPhoto(index) {
   lightboxImage.alt = photo.alt;
   lightboxImage.width = width;
   lightboxImage.height = height;
-  lightboxCaption.textContent = `${activePhotoIndex + 1} / ${galleryPhotos.length}`;
+  lightboxCaption.textContent = ui.photoCounter(activePhotoIndex + 1, galleryPhotos.length);
 
   if (!lightbox.open) lightbox.showModal();
 
@@ -476,7 +597,7 @@ galleryPhotos.forEach((photo, index) => {
   const button = document.createElement("button");
   button.type = "button";
   button.className = `gallery-item${photo.wide ? " landscape" : ""}`;
-  button.setAttribute("aria-label", `Open photo ${index + 1} of ${galleryPhotos.length}`);
+  button.setAttribute("aria-label", ui.openPhoto(index + 1, galleryPhotos.length));
   button.hidden = index >= initiallyVisiblePhotos;
 
   const image = document.createElement("img");
@@ -509,11 +630,11 @@ galleryToggle?.addEventListener("click", () => {
   });
 
   galleryToggle.setAttribute("aria-expanded", String(willExpand));
-  galleryToggle.textContent = willExpand ? "Collapse gallery" : "View all";
+  galleryToggle.textContent = willExpand ? ui.collapseGallery : ui.viewAll;
   if (galleryStatus) {
     galleryStatus.textContent = willExpand
-      ? "All 50 gallery photos are now visible."
-      : "Gallery collapsed to the first 20 photos.";
+      ? ui.allPhotosVisible
+      : ui.galleryCollapsed;
   }
 });
 
@@ -558,9 +679,9 @@ document.querySelector("#calendar-button")?.addEventListener("click", () => {
     "DTSTAMP:20260809T000000Z",
     "DTSTART:20261224T073000Z",
     "DTEND:20261224T150000Z",
-    "SUMMARY:Mai Anh & Anh Tuan's Wedding",
-    "DESCRIPTION:Welcome at 2:30 PM, ceremony at 3:00 PM, reception at 5:30 PM, and after party at 8:30 PM.",
-    "LOCATION:Sheraton Hanoi Hotel\\, Hanoi\\, Vietnam",
+    `SUMMARY:${ui.calendarSummary}`,
+    `DESCRIPTION:${ui.calendarDescription}`,
+    `LOCATION:${ui.calendarLocation}`,
     "END:VEVENT",
     "END:VCALENDAR",
   ].join("\r\n");
@@ -569,7 +690,7 @@ document.querySelector("#calendar-button")?.addEventListener("click", () => {
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = url;
-  link.download = "mai-anh-and-anh-tuan-wedding.ics";
+  link.download = ui.calendarFilename;
   document.body.appendChild(link);
   link.click();
   link.remove();
