@@ -31,6 +31,13 @@ body {
 }
 
 .language-landing {
+  --paper: #f8f3e8;
+  --ink: #252a26;
+  --muted: #687068;
+  --wine: #3f5949;
+  --wine-dark: #303b34;
+  --rose: #9e4e58;
+  --line: rgba(37, 42, 38, 0.16);
   display: grid;
   min-height: 100svh;
   align-items: safe center;
@@ -40,7 +47,7 @@ body {
     max(clamp(0.75rem, 2svh, 1.5rem), env(safe-area-inset-bottom))
     max(1rem, env(safe-area-inset-left));
   background:
-    radial-gradient(circle at 50% 0%, rgba(146, 88, 76, 0.38), transparent 34rem),
+    radial-gradient(circle at 48% 0%, rgba(158, 78, 88, 0.24), transparent 34rem),
     var(--wine-dark);
 }
 
@@ -49,22 +56,21 @@ body {
 }
 
 .language-landing-main {
-  width: min(100%, 42.5rem);
+  width: min(100%, 35rem);
   margin: 0 auto;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 0.45rem;
   background: var(--paper);
-  box-shadow: 0 2rem 6rem rgba(24, 12, 12, 0.34);
+  box-shadow: 0 2rem 6rem rgba(15, 22, 17, 0.3);
 }
 
 .language-landing-visual {
   position: relative;
   width: 100%;
-  max-height: min(50svh, 28.333rem);
+  height: min(57.8svh, 32.5rem);
   overflow: hidden;
-  aspect-ratio: 3 / 2;
-  background: #251817;
+  background: #cfd4c8;
 }
 
 .language-landing-visual picture,
@@ -76,7 +82,7 @@ body {
 
 .language-landing-visual img {
   object-fit: cover;
-  object-position: center;
+  object-position: center 66%;
 }
 
 .language-landing-panel {
@@ -139,6 +145,7 @@ body {
   font-family: var(--serif);
   font-size: 1.2rem;
   font-weight: 500;
+  line-height: 1.2;
 }
 
 .language-option span {
@@ -146,6 +153,7 @@ body {
   font-size: 0.6rem;
   font-weight: 500;
   letter-spacing: 0.08em;
+  line-height: 1.2;
   text-transform: uppercase;
 }
 
@@ -163,7 +171,7 @@ body {
 .language-option:focus-visible {
   border-color: var(--wine);
   color: #fff;
-  outline: 3px solid rgba(146, 88, 76, 0.28);
+  outline: 3px solid rgba(158, 78, 88, 0.32);
   outline-offset: 3px;
   background: var(--wine);
   transform: translateY(-2px);
@@ -1350,6 +1358,7 @@ footer a {
 
 @media (max-width: 700px) {
   .language-landing {
+    align-items: start;
     padding: 0;
     background: var(--paper);
   }
@@ -1359,6 +1368,10 @@ footer a {
     border: 0;
     border-radius: 0;
     box-shadow: none;
+  }
+
+  .language-landing-visual {
+    height: min(51svh, 26.875rem);
   }
 
   .language-landing-panel {
