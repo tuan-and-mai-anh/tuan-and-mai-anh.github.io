@@ -926,12 +926,27 @@ a {
   color: rgba(255, 255, 255, 0.76);
 }
 
-.schedule-rsvp-vi .button:disabled {
+.schedule-rsvp-vi .button {
   border-color: rgba(255, 255, 255, 0.34);
-  color: rgba(255, 255, 255, 0.76);
-  cursor: not-allowed;
-  opacity: 1;
-  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.schedule-rsvp-vi .button:hover,
+.schedule-rsvp-vi .button:focus-visible {
+  border-color: rgba(255, 255, 255, 0.58);
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.rsvp-card .button:focus-visible,
+.schedule-rsvp-vi .button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.rsvp-card .button:active,
+.schedule-rsvp-vi .button:active {
+  transform: translateY(0) scale(0.98);
 }
 
 .travel-grid {

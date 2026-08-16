@@ -24,7 +24,7 @@ The project has no build step and can be hosted directly with GitHub Pages, Netl
 
 ## Content notes
 
-- RSVP is intentionally marked “coming soon” until the couple supplies their Fillout form ID. No previous-couple form URL or integration is included.
+- RSVP buttons link directly to the couple's language-specific Fillout forms in a new tab; no form embeds or scripts are included.
 - The calendar download stores the 2:30 PM Hanoi welcome time in UTC for broad calendar compatibility.
 - No analytics, third-party form embeds, or tracking scripts are included.
 
