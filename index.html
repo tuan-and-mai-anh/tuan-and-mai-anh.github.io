@@ -15,9 +15,10 @@
   <meta property="og:title" content="Mai Anh & Anh Tuan">
   <meta property="og:description" content="December 24, 2026 · Sheraton Hanoi Hotel">
   <meta property="og:url" content="https://tuan-and-mai-anh.github.io/">
-  <meta property="og:image" content="https://tuan-and-mai-anh.github.io/assets/landing/language-selector-680.jpg">
-  <meta property="og:image:width" content="680">
-  <meta property="og:image:height" content="1020">
+  <meta property="og:image" content="https://tuan-and-mai-anh.github.io/assets/landing/language-selector-landscape-960.jpg">
+  <meta property="og:image:width" content="960">
+  <meta property="og:image:height" content="640">
+  <meta property="og:image:alt" content="Mai Anh and Anh Tuan together near the Eiffel Tower in Paris">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="vi_VN">
   <style>
@@ -25,9 +26,10 @@
     html { background: #3f2928; }
     body.language-landing { margin: 0; }
     .language-landing-main { width: min(100%, 42.5rem); margin: 0 auto; }
-    .language-landing-visual img { display: block; width: 100%; height: auto; }
+    .language-landing-visual { aspect-ratio: 3 / 2; }
+    .language-landing-visual img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
     .language-landing-panel { text-align: center; }
-    .language-landing-panel h1 { font-size: clamp(1.9rem, 9.5vw, 4.25rem); white-space: nowrap; }
+    .language-landing-panel h1 { font-size: clamp(1.9rem, 8.5vw, 3.35rem); white-space: nowrap; }
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,15 +42,15 @@
       <picture>
         <source
           type="image/webp"
-          srcset="/assets/landing/language-selector-480.webp 480w, /assets/landing/language-selector-680.webp 680w"
+          srcset="/assets/landing/language-selector-landscape-480.webp 480w, /assets/landing/language-selector-landscape-960.webp 960w"
           sizes="(max-width: 700px) 100vw, 680px">
         <img
-          src="/assets/landing/language-selector-680.jpg"
-          srcset="/assets/landing/language-selector-480.jpg 480w, /assets/landing/language-selector-680.jpg 680w"
+          src="/assets/landing/language-selector-landscape-960.jpg"
+          srcset="/assets/landing/language-selector-landscape-480.jpg 480w, /assets/landing/language-selector-landscape-960.jpg 960w"
           sizes="(max-width: 700px) 100vw, 680px"
-          width="680"
-          height="1020"
-          alt="Mai Anh &amp; Anh Tuan · Paris · Eiffel Tower"
+          width="960"
+          height="640"
+          alt="Mai Anh and Anh Tuan together near the Eiffel Tower in Paris"
           fetchpriority="high"
           decoding="async">
       </picture>
