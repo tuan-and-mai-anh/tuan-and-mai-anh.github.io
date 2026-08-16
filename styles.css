@@ -701,7 +701,7 @@ a {
   }
 
   .schedule-event-group .timeline-time,
-  .schedule-rsvp-vi .timeline-time {
+  .schedule-rsvp-vi .rsvp-deadline-vi {
     font-size: clamp(1.4rem, 2.5vw, 1.75rem);
   }
 
@@ -720,9 +720,13 @@ a {
 
 .timeline-time {
   padding-top: 0.15rem;
+  text-align: right;
+}
+
+.timeline-time,
+.rsvp-deadline-vi {
   font-family: var(--serif);
   font-size: 2rem;
-  text-align: right;
 }
 
 .timeline-time small {
@@ -876,7 +880,10 @@ a {
 }
 
 .schedule-rsvp-vi {
+  display: flex;
   width: min(100%, 68rem);
+  align-items: center;
+  flex-direction: column;
   margin: clamp(3rem, 5vw, 4rem) auto 0;
   padding-top: clamp(2rem, 4vw, 3rem);
   border-top: 1px solid rgba(255, 255, 255, 0.24);
@@ -884,12 +891,14 @@ a {
 }
 
 .schedule-rsvp-vi .rsvp-copy-display {
+  width: 100%;
   max-width: 56rem;
   margin-right: auto;
   margin-left: auto;
   font-family: var(--serif);
   font-weight: 400;
   letter-spacing: -0.025em;
+  text-align: center;
   text-wrap: balance;
 }
 
@@ -1460,7 +1469,8 @@ footer a {
     gap: 1rem;
   }
 
-  .timeline-time {
+  .timeline-time,
+  .schedule-rsvp-vi .rsvp-deadline-vi {
     font-size: 1.5rem;
   }
 
@@ -1568,7 +1578,8 @@ footer a {
     gap: 0.8rem;
   }
 
-  .timeline-time {
+  .timeline-time,
+  .schedule-rsvp-vi .rsvp-deadline-vi {
     font-size: 1.2rem;
   }
 
