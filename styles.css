@@ -647,6 +647,13 @@ a {
   font-weight: 500;
 }
 
+.schedule-event-heading .schedule-event-date-vi {
+  color: #d5a99b;
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+
 @media (min-width: 880px) {
   .schedule-event-groups {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1589,6 +1596,10 @@ footer a {
 }
 
 @media (max-width: 379px) {
+  .schedule-rsvp-vi .rsvp-message-vi {
+    font-size: 0.95rem;
+  }
+
   .song-frame {
     aspect-ratio: auto;
   }
