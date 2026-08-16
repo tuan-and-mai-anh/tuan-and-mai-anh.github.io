@@ -527,7 +527,8 @@ a {
   line-height: 0.95;
 }
 
-.gallery-heading-single h2 {
+.gallery-heading-single h2,
+.film-heading-single h2 {
   margin-bottom: 0;
 }
 
