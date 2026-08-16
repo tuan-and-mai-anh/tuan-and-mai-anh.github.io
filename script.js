@@ -42,7 +42,7 @@ const ui = {
     songPlaying: "Bài hát của chúng mình đang được phát.",
     musicPaused: "Đã tạm dừng nhạc.",
     songEnded: "Bài hát đã kết thúc. Hãy chọn Phát nhạc để nghe lại.",
-    songPlayerTitle: "Bài hát của chúng mình - trình phát YouTube",
+    songPlayerTitle: "Bài hát yêu thích của chúng mình - trình phát YouTube",
     songReady: "Sẵn sàng phát bài hát của chúng mình.",
     songUnavailable: "Trình phát nhạc hiện không khả dụng. Hãy dùng liên kết YouTube để nghe.",
     songLoadFailed: "Không thể tải trình phát nhạc. Hãy dùng liên kết YouTube để nghe.",
@@ -153,6 +153,8 @@ const songToggle = document.querySelector("#song-toggle");
 const songToggleIcon = songToggle?.querySelector(".song-toggle-icon");
 const songToggleLabel = songToggle?.querySelector("[data-song-label]");
 const songStatus = document.querySelector("#song-status");
+const songPlayerElement = document.querySelector("#song-player");
+const songVideoId = songPlayerElement?.dataset.videoId || "hiI_f9hsC7I";
 const filmIframe = document.querySelector("#film-player");
 let songPlayer;
 let filmPlayer;
@@ -343,7 +345,7 @@ function initializeYouTubePlayers() {
   songPlayer = new YT.Player("song-player", {
     width: 640,
     height: 360,
-    videoId: "hiI_f9hsC7I",
+    videoId: songVideoId,
     host: "https://www.youtube-nocookie.com",
     playerVars: {
       autoplay: 0,
