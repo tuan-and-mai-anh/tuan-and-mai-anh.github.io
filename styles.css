@@ -550,6 +550,19 @@ a {
   margin-bottom: 0;
 }
 
+html[lang="vi"] .song-heading-single h2 {
+  font-size: clamp(2rem, 10vw, 3rem);
+  letter-spacing: -0.04em;
+  text-wrap: nowrap;
+  white-space: nowrap;
+}
+
+@media (min-width: 800px) {
+  html[lang="vi"] .song-heading-single h2 {
+    font-size: clamp(3rem, 6vw, 5.5rem);
+  }
+}
+
 .section-heading > p:last-child {
   margin-right: auto;
   margin-left: auto;
