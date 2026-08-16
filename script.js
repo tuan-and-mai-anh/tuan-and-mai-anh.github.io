@@ -671,8 +671,21 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "End") showPhoto(galleryPhotos.length - 1);
 });
 
+function downloadCalendar(calendarLines, filename) {
+  const calendar = calendarLines.join("\r\n");
+  const blob = new Blob([calendar], { type: "text/calendar;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
 document.querySelector("#calendar-button")?.addEventListener("click", () => {
-  const calendar = [
+  downloadCalendar([
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
     "PRODID:-//Mai Anh and Anh Tuan//Wedding//EN",
@@ -688,15 +701,23 @@ document.querySelector("#calendar-button")?.addEventListener("click", () => {
     `LOCATION:${ui.calendarLocation}`,
     "END:VEVENT",
     "END:VCALENDAR",
-  ].join("\r\n");
+  ], ui.calendarFilename);
+});
 
-  const blob = new Blob([calendar], { type: "text/calendar;charset=utf-8" });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = ui.calendarFilename;
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-  window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+document.querySelector("#calendar-button-tam-ky")?.addEventListener("click", () => {
+  downloadCalendar([
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    "PRODID:-//Mai Anh and Anh Tuan//Wedding//VI",
+    "CALSCALE:GREGORIAN",
+    "METHOD:PUBLISH",
+    "BEGIN:VEVENT",
+    "UID:20261220-tam-ky-wedding@maianh-anhtuan",
+    "DTSTAMP:20260809T000000Z",
+    "DTSTART:20261220T040000Z",
+    "SUMMARY:Tiệc cưới với gia đình cô dâu",
+    "LOCATION:Mường Thanh Grand Quảng Nam Hotel\\, 351A Hùng Vương\\, Tam Kỳ\\, Quảng Nam\\, Việt Nam",
+    "END:VEVENT",
+    "END:VCALENDAR",
+  ], "tiec-cuoi-mai-anh-anh-tuan-tam-ky.ics");
 });

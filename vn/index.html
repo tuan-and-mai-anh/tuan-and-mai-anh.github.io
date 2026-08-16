@@ -53,7 +53,7 @@
       </video>
       <div class="hero-shade" aria-hidden="true"></div>
       <div class="hero-content">
-        <p class="eyebrow">Hẹn gặp bạn ở Việt Nam</p>
+        <p class="eyebrow hero-invitation-vi">Hẹn gặp bạn ở Việt Nam</p>
         <h1 id="hero-title"><span>Mai Anh</span><i>&amp;</i><span>Anh Tuan</span></h1>
         <div class="hero-events" aria-label="Ngày và địa điểm tổ chức">
           <div class="hero-event">
@@ -72,66 +72,94 @@
     </section>
 
     <section class="schedule section dark-section" id="schedule">
-      <div class="section-heading light">
-        <p class="eyebrow">Thứ Năm, ngày 24 tháng 12 năm 2026</p>
+      <div class="section-heading schedule-heading-single light">
         <h2>Chương trình</h2>
-        <p>Sheraton Hanoi Hotel · 11 Xuân Diệu, Tây Hồ, Hà Nội</p>
       </div>
-      <div class="timeline">
-        <article class="timeline-item">
-          <div class="timeline-time">14:30</div>
-          <div class="timeline-marker" aria-hidden="true"></div>
-          <div>
-            <p class="timeline-kicker">Đón khách</p>
-            <h3>Hoạt động chào đón</h3>
-            <p>Hãy đến, ổn định chỗ ngồi và dành chút thời gian bên nhau trước khi nghi lễ bắt đầu.</p>
+      <div class="schedule-event-groups">
+        <section class="schedule-event-group" aria-labelledby="tam-ky-event-title">
+          <div class="schedule-event-heading">
+            <p class="eyebrow">Chủ Nhật, 20 · 12 · 2026</p>
+            <h3 id="tam-ky-event-title">Tam Kỳ</h3>
+            <p><strong>Mường Thanh Grand Quảng Nam Hotel</strong><br>351A Hùng Vương, Tam Kỳ, Quảng Nam, Việt Nam</p>
           </div>
-        </article>
-        <article class="timeline-item">
-          <div class="timeline-time">15:00</div>
-          <div class="timeline-marker" aria-hidden="true"></div>
-          <div>
-            <p class="timeline-kicker">Nghi lễ · đến 16:30</p>
-            <h3>Lễ thành hôn</h3>
-            <p>Nghi lễ ngoài trời sẽ bắt đầu đúng giờ. Bạn nên mang theo một chiếc áo khoác mỏng.</p>
+          <div class="timeline timeline-single">
+            <article class="timeline-item">
+              <div class="timeline-time">11:00</div>
+              <div class="timeline-marker" aria-hidden="true"></div>
+              <div>
+                <h4>Tiệc cưới với gia đình cô dâu</h4>
+              </div>
+            </article>
           </div>
-        </article>
-        <article class="timeline-item">
-          <div class="timeline-time">17:30</div>
-          <div class="timeline-marker" aria-hidden="true"></div>
-          <div>
-            <p class="timeline-kicker">Tiệc tối · đến 20:30</p>
-            <h3>Tiệc cưới</h3>
-            <p>Cùng dùng bữa, nâng ly và chung vui tại phòng tiệc của Sheraton Hanoi.</p>
+          <div class="schedule-actions">
+            <a class="button button-light" href="https://www.google.com/maps/search/?api=1&amp;query=M%C6%B0%E1%BB%9Dng+Thanh+Grand+Qu%E1%BA%A3ng+Nam+Hotel%2C+351A+H%C3%B9ng+V%C6%B0%C6%A1ng%2C+Tam+K%E1%BB%B3%2C+Qu%E1%BA%A3ng+Nam%2C+Vi%E1%BB%87t+Nam" target="_blank" rel="noreferrer" aria-label="Xem bản đồ Mường Thanh Grand Quảng Nam Hotel">Xem bản đồ</a>
+            <button class="button button-outline" id="calendar-button-tam-ky" type="button">Thêm vào lịch</button>
           </div>
-        </article>
-        <article class="timeline-item">
-          <div class="timeline-time">20:30</div>
-          <div class="timeline-marker" aria-hidden="true"></div>
-          <div>
-            <p class="timeline-kicker">Chung vui · đến 22:00</p>
-            <h3>Tiệc sau lễ</h3>
-            <p>Hãy ở lại cùng chúng mình - tiệc sau lễ tiếp tục ngay tại phòng tiệc.</p>
+        </section>
+
+        <section class="schedule-event-group" aria-labelledby="ha-noi-event-title">
+          <div class="schedule-event-heading">
+            <p class="eyebrow">Thứ Năm, 24 · 12 · 2026</p>
+            <h3 id="ha-noi-event-title">Hà Nội</h3>
+            <p><strong>Sheraton Hanoi Hotel</strong><br>11 Xuân Diệu, Tây Hồ, Hà Nội</p>
           </div>
-        </article>
-      </div>
-      <div class="schedule-actions">
-        <a class="button button-light" href="https://maps.google.com/?q=Sheraton+Hanoi+Hotel+11+Xuan+Dieu+Hanoi" target="_blank" rel="noreferrer">Xem bản đồ</a>
-        <button class="button button-outline" id="calendar-button" type="button">Thêm vào lịch</button>
+          <div class="timeline">
+            <article class="timeline-item">
+              <div class="timeline-time">14:30</div>
+              <div class="timeline-marker" aria-hidden="true"></div>
+              <div>
+                <p class="timeline-kicker">Đón khách</p>
+                <h4>Hoạt động chào đón</h4>
+                <p>Hãy đến, ổn định chỗ ngồi và dành chút thời gian bên nhau trước khi nghi lễ bắt đầu.</p>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <div class="timeline-time">15:00</div>
+              <div class="timeline-marker" aria-hidden="true"></div>
+              <div>
+                <p class="timeline-kicker">Nghi lễ · đến 16:30</p>
+                <h4>Lễ thành hôn</h4>
+                <p>Nghi lễ ngoài trời sẽ bắt đầu đúng giờ. Bạn nên mang theo một chiếc áo khoác mỏng.</p>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <div class="timeline-time">17:30</div>
+              <div class="timeline-marker" aria-hidden="true"></div>
+              <div>
+                <p class="timeline-kicker">Tiệc tối · đến 20:30</p>
+                <h4>Tiệc cưới</h4>
+                <p>Cùng dùng bữa, nâng ly và chung vui tại phòng tiệc của Sheraton Hanoi.</p>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <div class="timeline-time">20:30</div>
+              <div class="timeline-marker" aria-hidden="true"></div>
+              <div>
+                <p class="timeline-kicker">Chung vui · đến 22:00</p>
+                <h4>Tiệc sau lễ</h4>
+                <p>Hãy ở lại cùng chúng mình - tiệc sau lễ tiếp tục ngay tại phòng tiệc.</p>
+              </div>
+            </article>
+          </div>
+          <div class="schedule-actions">
+            <a class="button button-light" href="https://maps.google.com/?q=Sheraton+Hanoi+Hotel+11+Xuan+Dieu+Hanoi" target="_blank" rel="noreferrer">Xem bản đồ</a>
+            <button class="button button-outline" id="calendar-button" type="button">Thêm vào lịch</button>
+          </div>
+        </section>
       </div>
     </section>
 
     <section class="rsvp section" id="rsvp">
-      <div class="rsvp-card">
-        <p class="eyebrow">Vui lòng phản hồi trước ngày 15 tháng 10 năm 2026</p>
-        <p>Chúng mình rất mong được gặp bạn trong ngày đặc biệt này.</p>
+      <div class="rsvp-card rsvp-card-vi">
+        <p class="eyebrow rsvp-copy-display rsvp-deadline-vi">Vui lòng phản hồi trước ngày 15 tháng 10 năm 2026</p>
+        <p class="rsvp-copy-display">Chúng mình rất mong được gặp bạn trong ngày đặc biệt này.</p>
         <a class="button button-primary" href="#rsvp">Biểu mẫu RSVP sắp mở</a>
       </div>
     </section>
 
     <section class="gallery section" id="gallery">
       <div class="section-heading gallery-heading-single">
-        <h2>Vài pô sống ảo tại Paris</h2>
+        <h2 class="vi-display-heading">Vài pô sống ảo tại Paris</h2>
       </div>
       <div class="gallery-grid" id="gallery-grid" aria-live="polite"></div>
       <div class="gallery-actions">

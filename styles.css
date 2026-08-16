@@ -10,6 +10,7 @@
   --line: rgba(52, 43, 40, 0.16);
   --serif: "Cormorant Garamond", Georgia, serif;
   --sans: "Manrope", system-ui, sans-serif;
+  --vi-display-heading-size: clamp(2rem, 8vw, 4.5rem);
 }
 
 * {
@@ -363,6 +364,12 @@ a {
   color: rgba(255, 255, 255, 0.72);
 }
 
+.hero .hero-invitation-vi {
+  margin-bottom: 1.25rem;
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  letter-spacing: 0.18em;
+}
+
 .hero h1 {
   display: flex;
   align-items: center;
@@ -422,7 +429,7 @@ a {
 
 .hero-events {
   display: grid;
-  width: min(100%, 42rem);
+  width: min(100%, 48rem);
   margin: 1.8rem auto 0;
   gap: 0.7rem;
 }
@@ -431,7 +438,7 @@ a {
   display: grid;
   min-width: 0;
   align-items: center;
-  font-size: clamp(0.56rem, 1.2vw, 0.68rem);
+  font-size: clamp(0.68rem, 1.35vw, 0.82rem);
   font-weight: 500;
   grid-template-columns: minmax(0, 0.72fr) auto minmax(0, 1.15fr);
   letter-spacing: 0.1em;
@@ -454,7 +461,7 @@ a {
   border-right: 1px solid rgba(255, 255, 255, 0.3);
   border-left: 1px solid rgba(255, 255, 255, 0.3);
   font-family: var(--serif);
-  font-size: clamp(0.95rem, 2vw, 1.25rem);
+  font-size: clamp(1.15rem, 2.2vw, 1.45rem);
   letter-spacing: 0.12em;
   line-height: 1.25;
 }
@@ -528,7 +535,8 @@ a {
 }
 
 .gallery-heading-single h2,
-.film-heading-single h2 {
+.film-heading-single h2,
+.schedule-heading-single h2 {
   margin-bottom: 0;
 }
 
@@ -597,6 +605,46 @@ a {
   margin: 0 auto;
 }
 
+.schedule-event-groups {
+  display: grid;
+  width: min(100%, 68rem);
+  margin: 0 auto;
+  gap: clamp(5rem, 10vw, 8rem);
+}
+
+.schedule-event-group {
+  min-width: 0;
+}
+
+.schedule-event-group + .schedule-event-group {
+  padding-top: clamp(4rem, 8vw, 6rem);
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.schedule-event-heading {
+  width: min(100%, 42rem);
+  margin: 0 auto clamp(2.5rem, 6vw, 4rem);
+  text-align: center;
+}
+
+.schedule-event-heading h3 {
+  margin: 0 0 0.75rem;
+  font-family: var(--serif);
+  font-size: clamp(2.75rem, 6vw, 4.75rem);
+  font-weight: 400;
+  line-height: 0.95;
+}
+
+.schedule-event-heading > p:last-child {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.schedule-event-heading strong {
+  color: #fff;
+  font-weight: 500;
+}
+
 .timeline-item {
   display: grid;
   min-height: 10rem;
@@ -656,11 +704,16 @@ a {
   text-transform: uppercase;
 }
 
-.timeline-item h3 {
+.timeline-item h3,
+.timeline-item h4 {
   margin: 0 0 0.5rem;
   font-family: var(--serif);
   font-size: 2rem;
   font-weight: 400;
+}
+
+.timeline-single .timeline-item {
+  min-height: 6rem;
 }
 
 .timeline-item div:last-child > p:last-child {
@@ -741,6 +794,30 @@ a {
   max-width: 35rem;
   margin: 0 auto 2rem;
   color: var(--muted);
+}
+
+.section-heading h2.vi-display-heading,
+.rsvp-card-vi .rsvp-copy-display {
+  font-size: var(--vi-display-heading-size);
+}
+
+.rsvp-card-vi {
+  padding-inline: clamp(1.25rem, 6vw, 3rem);
+}
+
+.rsvp-card-vi .rsvp-copy-display {
+  max-width: 48rem;
+  font-family: var(--serif);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 1.02;
+}
+
+.rsvp-card-vi .rsvp-deadline-vi {
+  margin-bottom: 1.75rem;
+  color: var(--rose);
+  font-weight: 500;
+  letter-spacing: 0.035em;
 }
 
 .travel-grid {
@@ -1292,13 +1369,14 @@ footer a {
   }
 
   .hero-events {
-    width: min(calc(100% + 0.5rem), 22rem);
-    margin-top: 1.25rem;
+    width: min(calc(100% + 1rem), 23rem);
+    margin: 1.25rem 0 0 50%;
     gap: 0.55rem;
+    transform: translateX(-50%);
   }
 
   .hero-event {
-    font-size: clamp(0.54rem, 2.65vw, 0.62rem);
+    font-size: clamp(0.6rem, 2.7vw, 0.7rem);
     grid-template-columns: minmax(0, 0.72fr) auto minmax(0, 1.15fr);
     letter-spacing: 0.07em;
   }
@@ -1309,7 +1387,7 @@ footer a {
 
   .hero-event-date {
     padding: 0.35rem clamp(0.3rem, 1.4vw, 0.5rem);
-    font-size: clamp(0.82rem, 4vw, 0.95rem);
+    font-size: clamp(0.9rem, 4.1vw, 1.05rem);
     letter-spacing: 0.08em;
   }
 
