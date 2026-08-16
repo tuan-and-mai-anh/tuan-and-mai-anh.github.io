@@ -527,6 +527,10 @@ a {
   line-height: 0.95;
 }
 
+.gallery-heading-single h2 {
+  margin-bottom: 0;
+}
+
 .section-heading > p:last-child {
   margin-right: auto;
   margin-left: auto;
