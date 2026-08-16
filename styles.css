@@ -99,10 +99,11 @@ body {
 .language-landing-panel h1 {
   margin: 0;
   font-family: var(--serif);
-  font-size: clamp(3.75rem, 9vw, 5.5rem);
+  font-size: clamp(2.2rem, 7vw, 4.25rem);
   font-weight: 400;
-  letter-spacing: -0.045em;
-  line-height: 0.88;
+  letter-spacing: -0.055em;
+  line-height: 1;
+  white-space: nowrap;
 }
 
 .language-prompt {
@@ -169,14 +170,6 @@ body {
 .language-option:hover span,
 .language-option:focus-visible span {
   color: rgba(255, 255, 255, 0.72);
-}
-
-.language-landing-location {
-  margin: 3rem 0 0;
-  color: var(--muted);
-  font-size: 0.62rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
 }
 
 body::before {
@@ -429,43 +422,40 @@ a {
 
 .hero-events {
   display: grid;
-  width: min(100%, 37rem);
+  width: min(100%, 42rem);
   margin: 1.8rem auto 0;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 0.3rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  background: rgba(37, 24, 23, 0.18);
+  gap: 0.7rem;
 }
 
 .hero-event {
   display: grid;
-  min-height: 6.5rem;
-  align-content: center;
-  padding: 0.9rem 1.5rem;
-  font-size: 0.62rem;
+  min-width: 0;
+  align-items: center;
+  font-size: clamp(0.56rem, 1.2vw, 0.68rem);
   font-weight: 500;
-  gap: 0.25rem;
-  letter-spacing: 0.14em;
+  grid-template-columns: minmax(0, 0.72fr) auto minmax(0, 1.15fr);
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
-.hero-event:first-child {
-  background: rgba(146, 88, 76, 0.24);
-}
-
 .hero-event + .hero-event {
-  border-left: 1px solid rgba(255, 255, 255, 0.24);
+  padding-top: 0.7rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.24);
 }
 
 .hero-event p {
   margin: 0;
+  padding-inline: clamp(0.25rem, 1.5vw, 0.75rem);
+  white-space: nowrap;
 }
 
 .hero-event-date {
+  padding-block: 0.45rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
   font-family: var(--serif);
-  font-size: clamp(1.05rem, 2vw, 1.3rem);
-  letter-spacing: 0.16em;
+  font-size: clamp(0.95rem, 2vw, 1.25rem);
+  letter-spacing: 0.12em;
   line-height: 1.25;
 }
 
@@ -1146,16 +1136,13 @@ footer a {
   }
 
   .language-landing-panel h1 {
-    font-size: clamp(3.35rem, 16vw, 4.75rem);
+    font-size: clamp(2.05rem, 9.5vw, 3.25rem);
   }
 
   .language-prompt {
     margin: 1.5rem 0;
   }
 
-  .language-landing-location {
-    margin-top: 2rem;
-  }
 }
 
 @media (max-width: 800px) {
@@ -1300,23 +1287,25 @@ footer a {
   }
 
   .hero-events {
-    width: min(100%, 19rem);
+    width: min(calc(100% + 0.5rem), 22rem);
     margin-top: 1.25rem;
-    grid-template-columns: 1fr;
+    gap: 0.55rem;
   }
 
   .hero-event {
-    min-height: auto;
-    padding: 0.65rem 1rem;
+    font-size: clamp(0.54rem, 2.65vw, 0.62rem);
+    grid-template-columns: minmax(0, 0.72fr) auto minmax(0, 1.15fr);
+    letter-spacing: 0.07em;
   }
 
   .hero-event + .hero-event {
-    border-top: 1px solid rgba(255, 255, 255, 0.24);
-    border-left: 0;
+    padding-top: 0.55rem;
   }
 
   .hero-event-date {
-    font-size: 1rem;
+    padding: 0.35rem clamp(0.3rem, 1.4vw, 0.5rem);
+    font-size: clamp(0.82rem, 4vw, 0.95rem);
+    letter-spacing: 0.08em;
   }
 
   .countdown strong {
