@@ -660,9 +660,25 @@ a {
 
 @media (min-width: 880px) {
   .schedule-event-groups {
-    align-items: start;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(2.5rem, 5vw, 5rem);
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    column-gap: clamp(2.5rem, 5vw, 5rem);
+    row-gap: 0;
+  }
+
+  .schedule-event-group {
+    display: grid;
+    grid-row: 1 / span 3;
+    grid-template-rows: auto 1fr auto;
+    grid-template-rows: subgrid;
+  }
+
+  .schedule-event-group:first-child {
+    grid-column: 1;
+  }
+
+  .schedule-event-group:last-child {
+    grid-column: 2;
   }
 
   .schedule-event-group + .schedule-event-group {
@@ -671,8 +687,12 @@ a {
   }
 
   .schedule-event-heading {
-    min-height: 6.5rem;
     margin-bottom: clamp(2.25rem, 4vw, 3rem);
+  }
+
+  .schedule-event-group .timeline {
+    display: grid;
+    grid-auto-rows: 1fr;
   }
 
   .schedule-event-group .timeline-item {
@@ -768,6 +788,18 @@ a {
   justify-content: center;
   gap: 1rem;
   margin-top: 2rem;
+}
+
+.schedule-event-group .schedule-actions {
+  width: 100%;
+}
+
+.schedule-event-group .schedule-actions .button {
+  min-width: 0;
+  flex: 1 1 0;
+  padding-right: clamp(0.65rem, 2vw, 1.25rem);
+  padding-left: clamp(0.65rem, 2vw, 1.25rem);
+  white-space: nowrap;
 }
 
 .button {
@@ -1491,6 +1523,11 @@ footer a {
 
   .schedule-actions {
     flex-direction: column;
+  }
+
+  .schedule-event-group .schedule-actions {
+    flex-direction: row;
+    gap: 0.75rem;
   }
 
   .song-controls {
