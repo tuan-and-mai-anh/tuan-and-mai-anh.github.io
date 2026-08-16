@@ -715,7 +715,7 @@ document.querySelector("#calendar-button-tam-ky")?.addEventListener("click", () 
     "UID:20261220-tam-ky-wedding@maianh-anhtuan",
     "DTSTAMP:20260809T000000Z",
     "DTSTART:20261220T040000Z",
-    "SUMMARY:Tiệc cưới với gia đình cô dâu",
+    "SUMMARY:Lễ cưới",
     "LOCATION:Mường Thanh Grand Quảng Nam Hotel\\, 351A Hùng Vương\\, Tam Kỳ\\, Quảng Nam\\, Việt Nam",
     "END:VEVENT",
     "END:VCALENDAR",

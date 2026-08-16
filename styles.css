@@ -725,10 +725,6 @@ a {
   font-weight: 400;
 }
 
-.timeline-single .timeline-item {
-  min-height: 6rem;
-}
-
 .timeline-item div:last-child > p:last-child {
   max-width: 32rem;
   margin: 0;
@@ -830,7 +826,9 @@ a {
   margin-bottom: 1.75rem;
   color: var(--rose);
   font-size: 0.7rem;
+  font-feature-settings: "lnum" 1, "onum" 0;
   font-weight: 500;
+  font-variant-numeric: lining-nums;
   letter-spacing: 0.035em;
 }
 
