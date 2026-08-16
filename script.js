@@ -413,8 +413,10 @@ const countdownFields = {
   minutes: document.querySelector('[data-count="minutes"]'),
   seconds: document.querySelector('[data-count="seconds"]'),
 };
+const hasCountdown = Object.values(countdownFields).every(Boolean);
 
 function updateCountdown() {
+  if (!hasCountdown) return;
   const remaining = Math.max(0, weddingTime - Date.now());
   const totalSeconds = Math.floor(remaining / 1000);
 
@@ -424,8 +426,10 @@ function updateCountdown() {
   countdownFields.seconds.textContent = String(totalSeconds % 60).padStart(2, "0");
 }
 
-updateCountdown();
-setInterval(updateCountdown, 1000);
+if (hasCountdown) {
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+}
 
 document.querySelectorAll(".accordion details").forEach((item) => {
   item.addEventListener("toggle", () => {

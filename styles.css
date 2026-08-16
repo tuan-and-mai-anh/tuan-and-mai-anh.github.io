@@ -427,6 +427,48 @@ a {
   letter-spacing: 0.18em;
 }
 
+.hero-events {
+  display: grid;
+  width: min(100%, 37rem);
+  margin: 1.8rem auto 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 0.3rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  background: rgba(37, 24, 23, 0.18);
+}
+
+.hero-event {
+  display: grid;
+  min-height: 6.5rem;
+  align-content: center;
+  padding: 0.9rem 1.5rem;
+  font-size: 0.62rem;
+  font-weight: 500;
+  gap: 0.25rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hero-event:first-child {
+  background: rgba(146, 88, 76, 0.24);
+}
+
+.hero-event + .hero-event {
+  border-left: 1px solid rgba(255, 255, 255, 0.24);
+}
+
+.hero-event p {
+  margin: 0;
+}
+
+.hero-event-date {
+  font-family: var(--serif);
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  letter-spacing: 0.16em;
+  line-height: 1.25;
+}
+
 .countdown {
   display: flex;
   width: min(100%, 31rem);
@@ -1255,6 +1297,26 @@ footer a {
     border-right: 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     border-left: 0;
+  }
+
+  .hero-events {
+    width: min(100%, 19rem);
+    margin-top: 1.25rem;
+    grid-template-columns: 1fr;
+  }
+
+  .hero-event {
+    min-height: auto;
+    padding: 0.65rem 1rem;
+  }
+
+  .hero-event + .hero-event {
+    border-top: 1px solid rgba(255, 255, 255, 0.24);
+    border-left: 0;
+  }
+
+  .hero-event-date {
+    font-size: 1rem;
   }
 
   .countdown strong {
