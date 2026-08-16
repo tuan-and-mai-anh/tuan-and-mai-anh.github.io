@@ -797,8 +797,7 @@ a {
   color: var(--muted);
 }
 
-.section-heading h2.vi-display-heading,
-.rsvp-card-vi .rsvp-copy-display {
+.section-heading h2.vi-display-heading {
   font-size: var(--vi-display-heading-size);
 }
 
@@ -809,6 +808,7 @@ a {
 .rsvp-card-vi .rsvp-copy-display {
   max-width: 48rem;
   font-family: var(--serif);
+  font-size: clamp(1.05rem, 2.5vw, 1.25rem);
   font-weight: 400;
   letter-spacing: -0.025em;
   line-height: 1.02;
@@ -817,6 +817,7 @@ a {
 .rsvp-card-vi .rsvp-deadline-vi {
   margin-bottom: 1.75rem;
   color: var(--rose);
+  font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.035em;
 }
