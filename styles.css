@@ -536,7 +536,8 @@ a {
 
 .gallery-heading-single h2,
 .film-heading-single h2,
-.schedule-heading-single h2 {
+.schedule-heading-single h2,
+.song-heading-single h2 {
   margin-bottom: 0;
 }
 
@@ -1091,6 +1092,15 @@ a {
   background:
     radial-gradient(circle at 15% 20%, rgba(189, 137, 124, 0.12), transparent 32rem),
     var(--wine-dark);
+}
+
+.gallery.gallery-vn-blended {
+  padding-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.film.film-vn-blended {
+  padding-top: 0;
+  background: var(--paper-deep);
 }
 
 .film-frame {
