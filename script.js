@@ -25,7 +25,7 @@ const ui = {
     allPhotosVisible: (total) => `All ${total} gallery photos are now visible.`,
     galleryCollapsed: "Gallery collapsed to the first 20 photos.",
     calendarSummary: "Mai Anh & Anh Tuan's Wedding",
-    calendarDescription: "Welcome at 2:30 PM, ceremony at 3:00 PM, reception at 5:30 PM, and after party at 8:30 PM.",
+    calendarDescription: "Welcome guests at 3:30 PM, vow ceremony at 4:00 PM, wedding ceremony at 6:30 PM, and after-party at 8:30 PM.",
     calendarLocation: "Sheraton Hanoi Hotel\\, Hanoi\\, Vietnam",
     calendarFilename: "mai-anh-and-anh-tuan-wedding.ics",
   },
@@ -54,7 +54,7 @@ const ui = {
     allPhotosVisible: (total) => `Cả ${total} ảnh trong thư viện đang được hiển thị.`,
     galleryCollapsed: "Thư viện đã thu gọn còn 20 ảnh đầu tiên.",
     calendarSummary: "Lễ cưới của Mai Anh & Anh Tuan",
-    calendarDescription: "Đón khách lúc 14:30, làm lễ lúc 15:00, tiệc cưới lúc 17:30 và tiệc sau lễ lúc 20:30.",
+    calendarDescription: "Tiếp khách lúc 15:30, lễ vow lúc 16:00, lễ cưới lúc 18:30 và after-party lúc 20:30.",
     calendarLocation: "Khách sạn Sheraton Hanoi\\, Hà Nội\\, Việt Nam",
     calendarFilename: "dam-cuoi-mai-anh-anh-tuan.ics",
   },
@@ -408,7 +408,7 @@ document.addEventListener("visibilitychange", () => {
   if (filmPlayerReady && filmPlayer.getPlayerState() === YT.PlayerState.PLAYING) filmPlayer.pauseVideo();
 });
 
-const weddingTime = new Date("2026-12-24T15:00:00+07:00").getTime();
+const weddingTime = new Date("2026-12-24T16:00:00+07:00").getTime();
 const countdownFields = {
   days: document.querySelector('[data-count="days"]'),
   hours: document.querySelector('[data-count="hours"]'),
@@ -718,7 +718,7 @@ document.querySelector("#calendar-button")?.addEventListener("click", () => {
     "BEGIN:VEVENT",
     "UID:20261224-wedding@maianh-anhtuan",
     "DTSTAMP:20260809T000000Z",
-    "DTSTART:20261224T073000Z",
+    "DTSTART:20261224T083000Z",
     "DTEND:20261224T150000Z",
     `SUMMARY:${ui.calendarSummary}`,
     `DESCRIPTION:${ui.calendarDescription}`,
